@@ -11,6 +11,11 @@ namespace Pruefung1_GeraeteVerwaltung
         public bool HatMicroSDSlot { set; get; }
         public bool Hat4G { set; get; }
 
-
+        public override void Print(string className = "")
+        {
+            base.Print();
+            Console.WriteLine($"\tMicroSD Slot?:\t{HatMicroSDSlot}");
+            Console.WriteLine($"\t4G?:\t\t{Hat4G}");
+        }
     }
 }
