@@ -12,7 +12,7 @@ namespace Pruefung1_GeraeteVerwaltung
         static void Main(string[] args)
         {
             var deviceList = DefaultDevices();
-            int selectedOpion;
+            int selectedOption;
             bool success = true;
             string errorText = "";
             while(true)
@@ -33,11 +33,11 @@ namespace Pruefung1_GeraeteVerwaltung
                     Console.Write("Wähle eine Menuoption aus: ");
 
                     errorText = "";
-                    if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedOpion))
+                    if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedOption))
                     {
-                        switch (selectedOpion)
+                        switch (selectedOption)
                         {
-                            case 1: // output devie list
+                            case 1: // output device list
                                 Console.Clear();
                                 PrintDeviceList(deviceList);
                                 Console.ReadKey();
@@ -53,9 +53,9 @@ namespace Pruefung1_GeraeteVerwaltung
                                         Console.WriteLine("ungültige Eingabe!");
                                     success = true;
 
-                                    if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedOpion))
+                                    if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedOption))
                                     {
-                                        switch (selectedOpion)
+                                        switch (selectedOption)
                                         {
                                             case 1:
                                                 deviceList.Add(Device.CreateNew<Tablet>());
@@ -75,45 +75,93 @@ namespace Pruefung1_GeraeteVerwaltung
                                 
                                 break;
                             case 3: // enter edit device mode
-                                List<Device> filteredList = new List<Device>();
+                                //List<Device> filteredList = new List<Device>();
                                 do
                                 {
                                     Console.Clear();
-                                    Console.WriteLine("1) -Tablet");
-                                    Console.WriteLine("2) -Smartphone");
-                                    Console.WriteLine("3) -Notebook");
-                                    if (!success)
-                                        Console.WriteLine("ungültige Eingabe!");
+                                    PrintDeviceList(deviceList, true);
+                                    //Console.WriteLine("1) -Tablet");
+                                    //Console.WriteLine("2) -Smartphone");
+                                    //Console.WriteLine("3) -Notebook");
+                                    //if (!success)
+                                    //    Console.WriteLine("ungültige Eingabe!");
                                     success = true;
 
-                                    if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedOpion))
+                                    if (Int32.TryParse(Console.ReadLine(), out selectedOption))
                                     {
-                                        switch (selectedOpion)
+                                        do
                                         {
-                                            case 1:
-                                                filteredList = deviceList.Where(device => device.GetType().Name == "Tablet").ToList();
-                                                break;
-                                            case 2:
-                                                filteredList = deviceList.Where(device => device.GetType().Name == "Smartphone").ToList();
-                                                break;
-                                            case 3:
-                                                filteredList = deviceList.Where(device => device.GetType().Name == "Notebook").ToList();
-                                                break;
-                                            default:
+                                            success = true;
+                                            int index = 0;
+                                            Device device = deviceList[selectedOption-1];
+                                            List<string> propStringList = deviceList[selectedOption-1].ToString().Split('\n').ToList();
+
+                                            Console.Clear();
+                                            Console.WriteLine($"  {index++}) -delete Device");
+                                            var props = device.GetType().GetProperties().OrderBy(p => p.DeclaringType == typeof(Device) ? 0 : 1);
+                                            foreach (var prop in props)
+                                            {
+                                                Console.WriteLine("{0,3}) -{1,-23}{2}", index++, prop.Name + ":", prop.GetValue(device));
+                                            }
+
+                                            int editOption = 0;
+                                            if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out editOption))
+                                            {
+                                                switch (editOption)
+                                                {
+                                                    case 0:
+                                                        Console.WriteLine("Sind Sie sich sicher? (Y = Ja)");
+                                                        var input = Console.ReadKey().KeyChar;
+                                                        if (input == 'y')
+                                                            deviceList.RemoveAt(selectedOption-1);
+                                                        break;
+                                                    //case 2:
+                                                    //    Console.Clear();
+                                                    //    PrintDeviceList(deviceList);
+                                                    //    Console.ReadKey();
+                                                    //    break;
+                                                    default:
+                                                        success = false;
+                                                        break;
+                                                }
+                                            }
+                                            else
+                                            {
                                                 success = false;
-                                                break;
-                                        }
-                                        if(success)
-                                        {
-                                            PrintDeviceList(filteredList, true);
-                                            Console.ReadKey();
-                                        }
+                                            }
+                                        } while (!success);
+                                        //foreach (var value in propStringList)
+                                        //{
+                                        //    Console.WriteLine($"{index++}) -{value});
+                                        //}
+
+                                        //    switch (--selectedOption)
+                                        //    {
+                                        //        case 1:
+                                        //            filteredList = deviceList.Where(device => device.GetType().Name == "Tablet").ToList();
+                                        //            break;
+                                        //        case 2:
+                                        //            filteredList = deviceList.Where(device => device.GetType().Name == "Smartphone").ToList();
+                                        //            break;
+                                        //        case 3:
+                                        //            filteredList = deviceList.Where(device => device.GetType().Name == "Notebook").ToList();
+                                        //            break;
+                                        //        default:
+                                        //            success = false;
+                                        //            break;
+                                        //    }
+                                        //    if(success)
+                                        //    {
+                                        //        PrintDeviceList(filteredList, true);
+                                        //        Console.ReadKey();
+                                        //    }
                                     }
                                     else
                                     {
                                         success = false;
                                     }
                                 } while (!success);
+                                Console.ReadKey();
                                 break;
                             case 9: // close programm
                                 Environment.Exit(0);
@@ -133,13 +181,12 @@ namespace Pruefung1_GeraeteVerwaltung
 
         static void PrintDeviceList(List<Device> list, bool withIndex = false)
         {
-            int index = 0;
+            int index = 1;
             foreach (Device device in list)
             {
                 Console.WriteLine($"{index++}) {device.GetType().Name}");
                 if (device != null)
                     Console.WriteLine(device.ToString(1));
-                index++;
             }
         }
 

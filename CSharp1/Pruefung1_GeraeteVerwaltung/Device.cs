@@ -42,6 +42,11 @@ namespace Pruefung1_GeraeteVerwaltung
             return returnString;
         }
 
+        //public List<Device> GetSortedList()
+        //{
+        //    return this.GetType().GetProperties().OrderBy(p => p.DeclaringType == typeof(Device) ? 0 : 1);
+        //}
+
         public static DeviceType CreateNew<DeviceType>() where DeviceType : Device, new()
         {
             DeviceType device = new DeviceType();
