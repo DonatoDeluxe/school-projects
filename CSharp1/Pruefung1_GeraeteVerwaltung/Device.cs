@@ -41,5 +41,72 @@ namespace Pruefung1_GeraeteVerwaltung
 
             return returnString;
         }
+
+        public static DeviceType CreateNew<DeviceType>() where DeviceType : Device, new()
+        {
+            DeviceType device = new DeviceType();
+            bool success = true;
+            int intNumber = 0;
+            double doubleNumber = 0;
+
+            var props = device.GetType().GetProperties().OrderBy(p => p.DeclaringType == typeof(Device) ? 0 : 1);
+            foreach (var prop in props)
+            {
+                do
+                {
+                    Console.Clear();
+                    Console.Write($"{prop.Name}: ");
+                    if (!success)
+                        Console.WriteLine("\nungültige Eingabe!");
+                    success = true;
+
+                    if (prop.PropertyType == typeof(int))
+                    {
+                        success = Int32.TryParse(Console.ReadLine(), out intNumber);
+                        prop.SetValue(device, intNumber);
+                    }
+                    else if (prop.PropertyType == typeof(double))
+                    {
+                        success = Double.TryParse(Console.ReadLine(), out doubleNumber);
+                        prop.SetValue(device, doubleNumber);
+                    }
+                    else if (prop.PropertyType == typeof(bool))
+                    {
+                        Console.WriteLine("drücken Sie 'Y' für wahr/trifft zu und 'N' für falsch/trifft nicht zu");
+                        var input = Console.ReadKey().KeyChar;
+                        if (input == 'y')
+                            prop.SetValue(device, true);
+                        else if (input == 'n')
+                            prop.SetValue(device, false);
+                        else
+                            success = false;
+                    }
+                    else if (prop.PropertyType == typeof(string))
+                    {
+                        prop.SetValue(device, Console.ReadLine());
+                    }
+                    else if (prop.PropertyType == typeof(Farbe))
+                    {
+                        Console.WriteLine();
+                        int length = Enum.GetNames(typeof(Farbe)).Length;
+                        for (int x = 1; x <= length; x++)
+                        {
+                            Console.WriteLine($"{x}) -{Enum.GetName(typeof(Farbe), x-1)}");
+                        }
+                        if (Int32.TryParse(Console.ReadLine(), out intNumber))
+                            prop.SetValue(device, intNumber-1);
+                        else
+                            success = false;
+                    }
+                    else
+                    {
+                        success = false;
+                    }
+
+                } while (!success);
+            }
+
+            return device;
+        }
     }
 }

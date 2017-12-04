@@ -12,7 +12,8 @@ namespace Pruefung1_GeraeteVerwaltung
         static void Main(string[] args)
         {
             var deviceList = DefaultDevices();
-            int number;
+            int selectedOpion;
+            bool success = true;
             string errorText = "";
             while(true)
             {
@@ -32,19 +33,87 @@ namespace Pruefung1_GeraeteVerwaltung
                     Console.Write("Wähle eine Menuoption aus: ");
 
                     errorText = "";
-                    if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out number))
+                    if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedOpion))
                     {
-                        switch (number)
+                        switch (selectedOpion)
                         {
                             case 1: // output devie list
                                 Console.Clear();
                                 PrintDeviceList(deviceList);
+                                Console.ReadKey();
                                 break;
                             case 2: // add new device
+                                do
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("1) -Tablet");
+                                    Console.WriteLine("2) -Smartphone");
+                                    Console.WriteLine("3) -Notebook");
+                                    if(!success)
+                                        Console.WriteLine("ungültige Eingabe!");
+                                    success = true;
 
+                                    if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedOpion))
+                                    {
+                                        switch (selectedOpion)
+                                        {
+                                            case 1:
+                                                deviceList.Add(Device.CreateNew<Tablet>());
+                                                break;
+                                            case 2:
+                                                deviceList.Add(Device.CreateNew<Smartphone>());
+                                                break;
+                                            case 3:
+                                                deviceList.Add(Device.CreateNew<Notebook>());
+                                                break;
+                                            default:
+                                                success = false;
+                                                break;
+                                        }
+                                    }
+                                } while (!success);
+                                
                                 break;
                             case 3: // enter edit device mode
+                                List<Device> filteredList = new List<Device>();
+                                do
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("1) -Tablet");
+                                    Console.WriteLine("2) -Smartphone");
+                                    Console.WriteLine("3) -Notebook");
+                                    if (!success)
+                                        Console.WriteLine("ungültige Eingabe!");
+                                    success = true;
 
+                                    if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedOpion))
+                                    {
+                                        switch (selectedOpion)
+                                        {
+                                            case 1:
+                                                filteredList = deviceList.Where(device => device.GetType().Name == "Tablet").ToList();
+                                                break;
+                                            case 2:
+                                                filteredList = deviceList.Where(device => device.GetType().Name == "Smartphone").ToList();
+                                                break;
+                                            case 3:
+                                                filteredList = deviceList.Where(device => device.GetType().Name == "Notebook").ToList();
+                                                break;
+                                            default:
+                                                success = false;
+                                                break;
+                                        }
+                                        if(success)
+                                        {
+                                            PrintDeviceList(filteredList, true);
+                                            Console.ReadKey();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        success = false;
+                                    }
+                                } while (!success);
                                 break;
                             case 9: // close programm
                                 Environment.Exit(0);
@@ -59,17 +128,18 @@ namespace Pruefung1_GeraeteVerwaltung
                         errorText = "Eingabe muss eine ganze Zahl sein!";
                     }
                 } while (errorText.Length != 0);
-                Console.ReadKey();
             }
         }
 
-        static void PrintDeviceList(List<Device> list)
+        static void PrintDeviceList(List<Device> list, bool withIndex = false)
         {
+            int index = 0;
             foreach (Device device in list)
             {
-                Console.WriteLine(device.GetType().Name);
+                Console.WriteLine($"{index++}) {device.GetType().Name}");
                 if (device != null)
                     Console.WriteLine(device.ToString(1));
+                index++;
             }
         }
 
