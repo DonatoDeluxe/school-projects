@@ -9,19 +9,84 @@ namespace Pruefung1_GeraeteVerwaltung
 {
     class Program
     {
-        public void PrintData(ArrayList dataList)
+        static void Main(string[] args)
         {
-            foreach (string data in dataList)
+            var deviceList = DefaultDevices();
+            int number;
+            string errorText = "";
+            while(true)
             {
-                Console.WriteLine($"{nameof(data)}:\t{data}");
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("1) -Liste aller eingetragener Geräte");
+                    Console.WriteLine("2) -Füge ein neues Gerät hinzu");
+                    Console.WriteLine("3) -Gerät bearbeiten");
+                    Console.WriteLine("9) -Programm beenden\n");
+
+                    if (errorText.Length != 0)
+                    {
+                        Console.WriteLine(errorText);
+                    }
+
+                    Console.Write("Wähle eine Menuoption aus: ");
+
+                    errorText = "";
+                    if (Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out number))
+                    {
+                        switch (number)
+                        {
+                            case 1: // output devie list
+                                Console.Clear();
+                                PrintDeviceList(deviceList);
+                                break;
+                            case 2: // add new device
+
+                                break;
+                            case 3: // enter edit device mode
+
+                                break;
+                            case 9: // close programm
+                                Environment.Exit(0);
+                                break;
+                            default:
+                                errorText = "ungültige Auswahl!";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        errorText = "Eingabe muss eine ganze Zahl sein!";
+                    }
+                } while (errorText.Length != 0);
+                Console.ReadKey();
             }
         }
 
-        static void Main(string[] args)
+        static void PrintDeviceList(List<Device> list)
         {
-            Device[] deviceList = new Device[50];
+            foreach (Device device in list)
+            {
+                Console.WriteLine(device.GetType().Name);
+                if (device != null)
+                    Console.WriteLine(device.ToString(1));
+            }
+        }
 
-            deviceList[0] = new Smartphone()
+
+
+
+
+
+
+
+
+        // just for cleaner and more readable main code
+        static List<Device> DefaultDevices()
+        {
+            var deviceList = new List<Device>();
+
+            deviceList.Add(new Smartphone()
             {
                 Marke = "IPhone",
                 Model = "7S",
@@ -36,9 +101,9 @@ namespace Pruefung1_GeraeteVerwaltung
                 Kaufpreis = 700.00,
                 HatMicroSDSlot = false,
                 MaxSpeichererweiterung = 0,
-            };
+            });
 
-            deviceList[1] = new Smartphone()
+            deviceList.Add(new Smartphone()
             {
                 Marke = "Samsung",
                 Model = "S7",
@@ -53,9 +118,9 @@ namespace Pruefung1_GeraeteVerwaltung
                 Kaufpreis = 450.00,
                 HatMicroSDSlot = true,
                 MaxSpeichererweiterung = 126,
-            };
+            });
 
-            deviceList[2] = new Tablet()
+            deviceList.Add(new Tablet()
             {
                 Marke = "Tablet1",
                 Model = "7S",
@@ -70,9 +135,9 @@ namespace Pruefung1_GeraeteVerwaltung
                 Kaufpreis = 700.00,
                 HatMicroSDSlot = false,
                 Hat4G = true,
-            };
+            });
 
-            deviceList[3] = new Tablet()
+            deviceList.Add(new Tablet()
             {
                 Marke = "Tablet2",
                 Model = "7S",
@@ -87,9 +152,9 @@ namespace Pruefung1_GeraeteVerwaltung
                 Kaufpreis = 700.00,
                 HatMicroSDSlot = false,
                 Hat4G = false,
-            };
+            });
 
-            deviceList[4] = new Notebook()
+            deviceList.Add(new Notebook()
             {
                 Marke = "Notebook1",
                 Model = "7S",
@@ -105,9 +170,9 @@ namespace Pruefung1_GeraeteVerwaltung
                 SSDGroesse = 126,
                 HatBelTastatur = true,
                 HatHDMIAnschluss = true
-            };
+            });
 
-            deviceList[5] = new Notebook()
+            deviceList.Add(new Notebook()
             {
                 Marke = "Notebook2",
                 Model = "7S",
@@ -123,18 +188,9 @@ namespace Pruefung1_GeraeteVerwaltung
                 SSDGroesse = 126,
                 HatBelTastatur = true,
                 HatHDMIAnschluss = false
-            };
+            });
 
-            PrintList(deviceList);
-        }
-
-        static void PrintList(Device[] list)
-        {
-            foreach (Device device in list)
-            {
-                if (device != null)
-                    device.Print();
-            }
+            return deviceList;
         }
     }
 }

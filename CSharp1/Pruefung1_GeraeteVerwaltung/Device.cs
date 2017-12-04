@@ -23,29 +23,23 @@ namespace Pruefung1_GeraeteVerwaltung
         public Farbe Farbe { set; get; }
         public double Kaufpreis { set; get; }
 
-        public virtual void Print(string className = "")
+        public override string ToString()
         {
-            //var props = Device.GetProperties();
-            //foreach (object obj in data)
-            //{
-            //    foreach (var prop in props)
-            //    {
-            //        object value = prop.GetValue(obj, null); // against prop.Name
-            //    }
-            //}
+            return this.ToString(0);
+        }
+
+        public string ToString(int tabs)
+        {
+            string indent = "";
+            while (tabs-- != 0)
+                indent += "  ";
             
-            Console.WriteLine($"{this.GetType().Name}");
-            Console.WriteLine($"\tMarke:\t\t\t{Marke}");
-            Console.WriteLine($"\tModel:\t\t\t{Model}");
-            Console.WriteLine($"\tOperating System:\t{OS}");
-            Console.WriteLine($"\tArbeitsspeicher:\t{Arbeitsspeicher}");
-            Console.WriteLine($"\tSpeicherkapazität:\t{Speicherkapazität}");
-            Console.WriteLine($"\tBildschirmgrösse:\t{Bildschirmgrösse}");
-            Console.WriteLine($"\tAkkulaufzeit:\t\t{Akkulaufzeit}");
-            Console.WriteLine($"\tProzessortyp:\t\t{Prozessortyp}");
-            Console.WriteLine($"\tAnzProzessoren:\t\t{AnzProzessoren}");
-            Console.WriteLine($"\tFarbe:\t\t\t{Farbe}");
-            Console.WriteLine($"\tKaufpreis:\t\t{Kaufpreis}");
+            string returnString = "";
+            var props = this.GetType().GetProperties().OrderBy(p => p.DeclaringType == typeof(Device) ? 0 : 1);
+            foreach (var prop in props)
+                returnString += String.Format(indent + "{0,-23}{1}\n", prop.Name + ":", prop.GetValue(this));
+
+            return returnString;
         }
     }
 }
