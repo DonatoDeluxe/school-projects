@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uebung_A-1", "Uebung_A-1\Ue
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uebung_A-2a", "Uebung_A-2a\Uebung_A-2a.csproj", "{4BB6A99A-5ED1-45F6-9E22-ECDFD56B751B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLZ_RentalBoatManager", "MLZ_RentalBoatManager\MLZ_RentalBoatManager.csproj", "{FA12068C-9A4E-4C92-A77A-EB2694506097}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{4BB6A99A-5ED1-45F6-9E22-ECDFD56B751B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BB6A99A-5ED1-45F6-9E22-ECDFD56B751B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BB6A99A-5ED1-45F6-9E22-ECDFD56B751B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA12068C-9A4E-4C92-A77A-EB2694506097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA12068C-9A4E-4C92-A77A-EB2694506097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA12068C-9A4E-4C92-A77A-EB2694506097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA12068C-9A4E-4C92-A77A-EB2694506097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
