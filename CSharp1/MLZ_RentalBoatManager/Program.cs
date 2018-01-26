@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -43,9 +44,9 @@ namespace MLZ_RentalBoatManager
 
 
         // just for cleaner and more readable main code
-        public static List<Boat> DefaultBoats()
+        public static BindingList<Boat> DefaultBoats()
         {
-            var boatsList = new List<Boat>();
+            var boatsList = new BindingList<Boat>();
 
             boatsList.Add(new Boat()
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,11 +12,11 @@ namespace MLZ_RentalBoatManager
     {
         [XmlArray("Boats")]
         [XmlArrayItem("Boat", typeof(Boat))]
-        public List<Boat> BoatsList { get; set; }
+        public BindingList<Boat> BoatsList { get; set; }
 
         public BoatsCollection()
         {
-            BoatsList = new List<Boat>();
+            BoatsList = new BindingList<Boat>();
         }
     }
 }

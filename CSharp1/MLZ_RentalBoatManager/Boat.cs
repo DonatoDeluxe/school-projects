@@ -11,7 +11,8 @@ namespace MLZ_RentalBoatManager
 
     public class Boat
     {
-        public string Brand { set; get; }
+		public string ImagePath { get; set; }
+		public string Brand { set; get; }
         public string Model { set; get; }
         public Category Category { set; get; }
         public Color Color { set; get; }
