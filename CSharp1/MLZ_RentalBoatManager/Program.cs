@@ -18,24 +18,10 @@ namespace MLZ_RentalBoatManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 mainForm = new Form1();
-
-            var boatsCollection = new BoatsCollection();
-            boatsCollection.BoatsList = DefaultBoats();
-
-            mainForm.BoatsList = boatsCollection.BoatsList;
+            mainForm.BoatsList = DefaultBoats();
 
             Application.Run(mainForm);
         }
-
-
-
-
-
-
-
-
-
-
 
 
         // just for cleaner and more readable main code
