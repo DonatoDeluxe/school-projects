@@ -12,7 +12,7 @@ namespace MLZ_RentalBoatManager
 
         public Form1()
         {
-            InitializeComponent();
+			InitializeComponent();
 
 			BoatsList = new BindingList<Boat>();
             categoryDropdown.DataSource = Enum.GetValues(typeof(Category));
@@ -27,11 +27,17 @@ namespace MLZ_RentalBoatManager
 
 		private void Form1_Load(object sender, EventArgs e)
         {
-            UpdateList();
-			foreach (Boat boat in BoatsList)
+			foreach (TextBox control in Controls.OfType<TextBox>())
 			{
-				Console.WriteLine(boat.Brand);
+				Console.WriteLine(control.GetType());
+				//control.TextChanged += new System.EventHandler(OnContentChanged);
 			}
+			foreach (ComboBox control in Controls.OfType<ComboBox>())
+			{
+				control.SelectedIndexChanged += new System.EventHandler(OnContentChanged);
+			}
+
+			UpdateList();
 		}
 
 		void BoatsList_ListChanged(object sender, ListChangedEventArgs e)
@@ -172,6 +178,11 @@ namespace MLZ_RentalBoatManager
 				imageBox.ImageLocation = dialog.FileName;
 			}
 			dialog.Dispose();
+		}
+
+		private void OnContentChanged(object sender, EventArgs e)
+		{
+			MessageBox.Show("OnContentChanged triggered");
 		}
 	}
 }

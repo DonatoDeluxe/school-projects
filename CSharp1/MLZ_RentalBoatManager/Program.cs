@@ -25,11 +25,6 @@ namespace MLZ_RentalBoatManager
             mainForm.BoatsList = boatsCollection.BoatsList;
 
             Application.Run(mainForm);
-            
-            foreach (var boat in boatsCollection.BoatsList)
-            {
-                Console.WriteLine(boat.ToString());
-            }
         }
 
 

@@ -1,4 +1,8 @@
-﻿namespace MLZ_RentalBoatManager
+﻿using System;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace MLZ_RentalBoatManager
 {
     partial class Form1
     {
@@ -29,8 +33,14 @@
         private void InitializeComponent()
         {
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.groupBox10 = new System.Windows.Forms.GroupBox();
+			this.boatsFormList = new System.Windows.Forms.ListBox();
 			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+			this.deleteEntryBtn = new System.Windows.Forms.Button();
+			this.newEntryBtn = new System.Windows.Forms.Button();
+			this.saveEntryBtn = new System.Windows.Forms.Button();
 			this.groupBox14 = new System.Windows.Forms.GroupBox();
 			this.maxSailSpeedInput = new System.Windows.Forms.TextBox();
 			this.groupBox13 = new System.Windows.Forms.GroupBox();
@@ -55,24 +65,20 @@
 			this.modelInput = new System.Windows.Forms.TextBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.brandInput = new System.Windows.Forms.TextBox();
-			this.selectImageBtn = new System.Windows.Forms.Button();
 			this.groupBox9 = new System.Windows.Forms.GroupBox();
 			this.imageBox = new System.Windows.Forms.PictureBox();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.deleteEntryBtn = new System.Windows.Forms.Button();
-			this.newEntryBtn = new System.Windows.Forms.Button();
-			this.saveEntryBtn = new System.Windows.Forms.Button();
-			this.groupBox10 = new System.Windows.Forms.GroupBox();
-			this.boatsFormList = new System.Windows.Forms.ListBox();
+			this.selectImageBtn = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			this.groupBox10.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
 			this.splitContainer2.Panel1.SuspendLayout();
 			this.splitContainer2.Panel2.SuspendLayout();
 			this.splitContainer2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
+			this.flowLayoutPanel1.SuspendLayout();
 			this.groupBox14.SuspendLayout();
 			this.groupBox13.SuspendLayout();
 			this.groupBox12.SuspendLayout();
@@ -86,8 +92,6 @@
 			this.groupBox2.SuspendLayout();
 			this.groupBox9.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
-			this.flowLayoutPanel1.SuspendLayout();
-			this.groupBox10.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
@@ -110,6 +114,29 @@
 			this.splitContainer1.SplitterDistance = 300;
 			this.splitContainer1.SplitterWidth = 3;
 			this.splitContainer1.TabIndex = 0;
+			// 
+			// groupBox10
+			// 
+			this.groupBox10.Controls.Add(this.boatsFormList);
+			this.groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.groupBox10.Location = new System.Drawing.Point(0, 0);
+			this.groupBox10.MinimumSize = new System.Drawing.Size(300, 0);
+			this.groupBox10.Name = "groupBox10";
+			this.groupBox10.Size = new System.Drawing.Size(300, 547);
+			this.groupBox10.TabIndex = 0;
+			this.groupBox10.TabStop = false;
+			this.groupBox10.Text = "Bootsliste";
+			// 
+			// boatsFormList
+			// 
+			this.boatsFormList.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.boatsFormList.FormattingEnabled = true;
+			this.boatsFormList.Location = new System.Drawing.Point(3, 16);
+			this.boatsFormList.Margin = new System.Windows.Forms.Padding(2);
+			this.boatsFormList.Name = "boatsFormList";
+			this.boatsFormList.Size = new System.Drawing.Size(294, 528);
+			this.boatsFormList.TabIndex = 1;
+			this.boatsFormList.SelectedIndexChanged += new System.EventHandler(this.boatsFormList_SelectedIndexChanged);
 			// 
 			// splitContainer2
 			// 
@@ -156,6 +183,68 @@
 			this.groupBox1.TabIndex = 2;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Details";
+			// 
+			// flowLayoutPanel1
+			// 
+			this.flowLayoutPanel1.Controls.Add(this.deleteEntryBtn);
+			this.flowLayoutPanel1.Controls.Add(this.newEntryBtn);
+			this.flowLayoutPanel1.Controls.Add(this.saveEntryBtn);
+			this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 466);
+			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(296, 79);
+			this.flowLayoutPanel1.TabIndex = 9;
+			// 
+			// deleteEntryBtn
+			// 
+			this.deleteEntryBtn.AutoSize = true;
+			this.deleteEntryBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.deleteEntryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.deleteEntryBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.deleteEntryBtn.Location = new System.Drawing.Point(2, 2);
+			this.deleteEntryBtn.Margin = new System.Windows.Forms.Padding(2);
+			this.deleteEntryBtn.MaximumSize = new System.Drawing.Size(0, 40);
+			this.deleteEntryBtn.MinimumSize = new System.Drawing.Size(0, 30);
+			this.deleteEntryBtn.Name = "deleteEntryBtn";
+			this.deleteEntryBtn.Size = new System.Drawing.Size(90, 30);
+			this.deleteEntryBtn.TabIndex = 14;
+			this.deleteEntryBtn.Text = "Eintrag löschen";
+			this.deleteEntryBtn.UseVisualStyleBackColor = true;
+			this.deleteEntryBtn.Click += new System.EventHandler(this.deleteEntryBtn_Click);
+			// 
+			// newEntryBtn
+			// 
+			this.newEntryBtn.AutoSize = true;
+			this.newEntryBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.newEntryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.newEntryBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.newEntryBtn.Location = new System.Drawing.Point(96, 2);
+			this.newEntryBtn.Margin = new System.Windows.Forms.Padding(2);
+			this.newEntryBtn.MaximumSize = new System.Drawing.Size(0, 40);
+			this.newEntryBtn.MinimumSize = new System.Drawing.Size(0, 30);
+			this.newEntryBtn.Name = "newEntryBtn";
+			this.newEntryBtn.Size = new System.Drawing.Size(92, 30);
+			this.newEntryBtn.TabIndex = 13;
+			this.newEntryBtn.Text = "Eintrag erstellen";
+			this.newEntryBtn.UseVisualStyleBackColor = true;
+			this.newEntryBtn.Click += new System.EventHandler(this.newEntryBtn_Click);
+			// 
+			// saveEntryBtn
+			// 
+			this.saveEntryBtn.AutoSize = true;
+			this.saveEntryBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.saveEntryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.saveEntryBtn.Dock = System.Windows.Forms.DockStyle.Top;
+			this.saveEntryBtn.Location = new System.Drawing.Point(192, 2);
+			this.saveEntryBtn.Margin = new System.Windows.Forms.Padding(2);
+			this.saveEntryBtn.MaximumSize = new System.Drawing.Size(0, 40);
+			this.saveEntryBtn.MinimumSize = new System.Drawing.Size(0, 30);
+			this.saveEntryBtn.Name = "saveEntryBtn";
+			this.saveEntryBtn.Size = new System.Drawing.Size(99, 30);
+			this.saveEntryBtn.TabIndex = 12;
+			this.saveEntryBtn.Text = "Eintrag speichern";
+			this.saveEntryBtn.UseVisualStyleBackColor = true;
+			this.saveEntryBtn.Click += new System.EventHandler(this.saveEntryBtn_Click);
 			// 
 			// groupBox14
 			// 
@@ -427,19 +516,6 @@
 			this.brandInput.Size = new System.Drawing.Size(292, 20);
 			this.brandInput.TabIndex = 0;
 			// 
-			// selectImageBtn
-			// 
-			this.selectImageBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.selectImageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.selectImageBtn.Location = new System.Drawing.Point(0, 494);
-			this.selectImageBtn.Name = "selectImageBtn";
-			this.selectImageBtn.Size = new System.Drawing.Size(378, 53);
-			this.selectImageBtn.TabIndex = 2;
-			this.selectImageBtn.Text = "Bild auswählen";
-			this.selectImageBtn.UseVisualStyleBackColor = true;
-			this.selectImageBtn.Click += new System.EventHandler(this.selectImageBtn_Click);
-			// 
 			// groupBox9
 			// 
 			this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -448,7 +524,7 @@
 			this.groupBox9.Controls.Add(this.imageBox);
 			this.groupBox9.Location = new System.Drawing.Point(3, 3);
 			this.groupBox9.Name = "groupBox9";
-			this.groupBox9.Size = new System.Drawing.Size(375, 485);
+			this.groupBox9.Size = new System.Drawing.Size(376, 485);
 			this.groupBox9.TabIndex = 3;
 			this.groupBox9.TabStop = false;
 			this.groupBox9.Text = "Bild";
@@ -459,95 +535,23 @@
 			this.imageBox.Location = new System.Drawing.Point(3, 16);
 			this.imageBox.Margin = new System.Windows.Forms.Padding(2);
 			this.imageBox.Name = "imageBox";
-			this.imageBox.Size = new System.Drawing.Size(369, 466);
+			this.imageBox.Size = new System.Drawing.Size(370, 466);
 			this.imageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.imageBox.TabIndex = 2;
 			this.imageBox.TabStop = false;
 			// 
-			// flowLayoutPanel1
+			// selectImageBtn
 			// 
-			this.flowLayoutPanel1.Controls.Add(this.deleteEntryBtn);
-			this.flowLayoutPanel1.Controls.Add(this.newEntryBtn);
-			this.flowLayoutPanel1.Controls.Add(this.saveEntryBtn);
-			this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 466);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-			this.flowLayoutPanel1.Size = new System.Drawing.Size(296, 79);
-			this.flowLayoutPanel1.TabIndex = 9;
-			// 
-			// deleteEntryBtn
-			// 
-			this.deleteEntryBtn.AutoSize = true;
-			this.deleteEntryBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.deleteEntryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.deleteEntryBtn.Dock = System.Windows.Forms.DockStyle.Top;
-			this.deleteEntryBtn.Location = new System.Drawing.Point(2, 2);
-			this.deleteEntryBtn.Margin = new System.Windows.Forms.Padding(2);
-			this.deleteEntryBtn.MaximumSize = new System.Drawing.Size(0, 40);
-			this.deleteEntryBtn.MinimumSize = new System.Drawing.Size(0, 30);
-			this.deleteEntryBtn.Name = "deleteEntryBtn";
-			this.deleteEntryBtn.Size = new System.Drawing.Size(90, 30);
-			this.deleteEntryBtn.TabIndex = 14;
-			this.deleteEntryBtn.Text = "Eintrag löschen";
-			this.deleteEntryBtn.UseVisualStyleBackColor = true;
-			this.deleteEntryBtn.Click += new System.EventHandler(this.deleteEntryBtn_Click);
-			// 
-			// newEntryBtn
-			// 
-			this.newEntryBtn.AutoSize = true;
-			this.newEntryBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.newEntryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.newEntryBtn.Dock = System.Windows.Forms.DockStyle.Top;
-			this.newEntryBtn.Location = new System.Drawing.Point(96, 2);
-			this.newEntryBtn.Margin = new System.Windows.Forms.Padding(2);
-			this.newEntryBtn.MaximumSize = new System.Drawing.Size(0, 40);
-			this.newEntryBtn.MinimumSize = new System.Drawing.Size(0, 30);
-			this.newEntryBtn.Name = "newEntryBtn";
-			this.newEntryBtn.Size = new System.Drawing.Size(92, 30);
-			this.newEntryBtn.TabIndex = 13;
-			this.newEntryBtn.Text = "Eintrag erstellen";
-			this.newEntryBtn.UseVisualStyleBackColor = true;
-			this.newEntryBtn.Click += new System.EventHandler(this.newEntryBtn_Click);
-			// 
-			// saveEntryBtn
-			// 
-			this.saveEntryBtn.AutoSize = true;
-			this.saveEntryBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.saveEntryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.saveEntryBtn.Dock = System.Windows.Forms.DockStyle.Top;
-			this.saveEntryBtn.Location = new System.Drawing.Point(192, 2);
-			this.saveEntryBtn.Margin = new System.Windows.Forms.Padding(2);
-			this.saveEntryBtn.MaximumSize = new System.Drawing.Size(0, 40);
-			this.saveEntryBtn.MinimumSize = new System.Drawing.Size(0, 30);
-			this.saveEntryBtn.Name = "saveEntryBtn";
-			this.saveEntryBtn.Size = new System.Drawing.Size(99, 30);
-			this.saveEntryBtn.TabIndex = 12;
-			this.saveEntryBtn.Text = "Eintrag speichern";
-			this.saveEntryBtn.UseVisualStyleBackColor = true;
-			this.saveEntryBtn.Click += new System.EventHandler(this.saveEntryBtn_Click);
-			// 
-			// groupBox10
-			// 
-			this.groupBox10.Controls.Add(this.boatsFormList);
-			this.groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox10.Location = new System.Drawing.Point(0, 0);
-			this.groupBox10.MinimumSize = new System.Drawing.Size(300, 0);
-			this.groupBox10.Name = "groupBox10";
-			this.groupBox10.Size = new System.Drawing.Size(300, 547);
-			this.groupBox10.TabIndex = 0;
-			this.groupBox10.TabStop = false;
-			this.groupBox10.Text = "Bootsliste";
-			// 
-			// boatsFormList
-			// 
-			this.boatsFormList.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.boatsFormList.FormattingEnabled = true;
-			this.boatsFormList.Location = new System.Drawing.Point(3, 16);
-			this.boatsFormList.Margin = new System.Windows.Forms.Padding(2);
-			this.boatsFormList.Name = "boatsFormList";
-			this.boatsFormList.Size = new System.Drawing.Size(294, 528);
-			this.boatsFormList.TabIndex = 1;
-			this.boatsFormList.SelectedIndexChanged += new System.EventHandler(this.boatsFormList_SelectedIndexChanged);
+			this.selectImageBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.selectImageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.selectImageBtn.Location = new System.Drawing.Point(0, 494);
+			this.selectImageBtn.Name = "selectImageBtn";
+			this.selectImageBtn.Size = new System.Drawing.Size(379, 53);
+			this.selectImageBtn.TabIndex = 2;
+			this.selectImageBtn.Text = "Bild auswählen";
+			this.selectImageBtn.UseVisualStyleBackColor = true;
+			this.selectImageBtn.Click += new System.EventHandler(this.selectImageBtn_Click);
 			// 
 			// Form1
 			// 
@@ -564,11 +568,14 @@
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			this.groupBox10.ResumeLayout(false);
 			this.splitContainer2.Panel1.ResumeLayout(false);
 			this.splitContainer2.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
 			this.splitContainer2.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
+			this.flowLayoutPanel1.ResumeLayout(false);
+			this.flowLayoutPanel1.PerformLayout();
 			this.groupBox14.ResumeLayout(false);
 			this.groupBox14.PerformLayout();
 			this.groupBox13.ResumeLayout(false);
@@ -591,12 +598,9 @@
 			this.groupBox2.PerformLayout();
 			this.groupBox9.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
-			this.flowLayoutPanel1.ResumeLayout(false);
-			this.flowLayoutPanel1.PerformLayout();
-			this.groupBox10.ResumeLayout(false);
 			this.ResumeLayout(false);
-
-        }
+			
+		}
 
         #endregion
 
