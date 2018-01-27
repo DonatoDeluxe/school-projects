@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MLZ_RentalBoatManager
 {
-    public enum Category { sailboat, catamaran, motorboat, kayak }
-    public enum Color { black, grey, white, blue, red, green }
+    public enum Category { none, sailboat, catamaran, motorboat, kayak }
+    public enum Color { none, black, grey, white, blue, red, green }
 
     public class Boat
     {
