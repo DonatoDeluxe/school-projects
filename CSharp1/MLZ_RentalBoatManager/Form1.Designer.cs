@@ -68,6 +68,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox9 = new System.Windows.Forms.GroupBox();
 			this.imageBox = new System.Windows.Forms.PictureBox();
 			this.selectImageBtn = new System.Windows.Forms.Button();
+			this.deleteImageBtn = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -110,8 +111,8 @@ namespace MLZ_RentalBoatManager
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
 			this.splitContainer1.Panel2MinSize = 600;
-			this.splitContainer1.Size = new System.Drawing.Size(984, 547);
-			this.splitContainer1.SplitterDistance = 300;
+			this.splitContainer1.Size = new System.Drawing.Size(1086, 541);
+			this.splitContainer1.SplitterDistance = 331;
 			this.splitContainer1.SplitterWidth = 3;
 			this.splitContainer1.TabIndex = 0;
 			// 
@@ -122,7 +123,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox10.Location = new System.Drawing.Point(0, 0);
 			this.groupBox10.MinimumSize = new System.Drawing.Size(300, 0);
 			this.groupBox10.Name = "groupBox10";
-			this.groupBox10.Size = new System.Drawing.Size(300, 547);
+			this.groupBox10.Size = new System.Drawing.Size(331, 541);
 			this.groupBox10.TabIndex = 0;
 			this.groupBox10.TabStop = false;
 			this.groupBox10.Text = "Bootsliste";
@@ -134,7 +135,7 @@ namespace MLZ_RentalBoatManager
 			this.boatsFormList.Location = new System.Drawing.Point(3, 16);
 			this.boatsFormList.Margin = new System.Windows.Forms.Padding(2);
 			this.boatsFormList.Name = "boatsFormList";
-			this.boatsFormList.Size = new System.Drawing.Size(294, 528);
+			this.boatsFormList.Size = new System.Drawing.Size(325, 522);
 			this.boatsFormList.TabIndex = 1;
 			this.boatsFormList.SelectedIndexChanged += new System.EventHandler(this.boatsFormList_SelectedIndexChanged);
 			// 
@@ -152,11 +153,12 @@ namespace MLZ_RentalBoatManager
 			// 
 			// splitContainer2.Panel2
 			// 
+			this.splitContainer2.Panel2.Controls.Add(this.deleteImageBtn);
 			this.splitContainer2.Panel2.Controls.Add(this.groupBox9);
 			this.splitContainer2.Panel2.Controls.Add(this.selectImageBtn);
 			this.splitContainer2.Panel2MinSize = 300;
-			this.splitContainer2.Size = new System.Drawing.Size(681, 547);
-			this.splitContainer2.SplitterDistance = 300;
+			this.splitContainer2.Size = new System.Drawing.Size(752, 541);
+			this.splitContainer2.SplitterDistance = 331;
 			this.splitContainer2.SplitterWidth = 3;
 			this.splitContainer2.TabIndex = 0;
 			// 
@@ -179,7 +181,7 @@ namespace MLZ_RentalBoatManager
 			this.detailGroupBox.Margin = new System.Windows.Forms.Padding(2);
 			this.detailGroupBox.Name = "detailGroupBox";
 			this.detailGroupBox.Padding = new System.Windows.Forms.Padding(2);
-			this.detailGroupBox.Size = new System.Drawing.Size(300, 547);
+			this.detailGroupBox.Size = new System.Drawing.Size(331, 541);
 			this.detailGroupBox.TabIndex = 2;
 			this.detailGroupBox.TabStop = false;
 			this.detailGroupBox.Text = "Details";
@@ -192,7 +194,7 @@ namespace MLZ_RentalBoatManager
 			this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 466);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-			this.flowLayoutPanel1.Size = new System.Drawing.Size(296, 79);
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(327, 73);
 			this.flowLayoutPanel1.TabIndex = 9;
 			// 
 			// deleteEntryBtn
@@ -254,7 +256,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox14.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox14.Name = "groupBox14";
 			this.groupBox14.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox14.Size = new System.Drawing.Size(296, 41);
+			this.groupBox14.Size = new System.Drawing.Size(327, 41);
 			this.groupBox14.TabIndex = 8;
 			this.groupBox14.TabStop = false;
 			this.groupBox14.Text = "Maximale Geschwindigkeit mit Segel in km/h";
@@ -265,7 +267,7 @@ namespace MLZ_RentalBoatManager
 			this.maxSailSpeedInput.Location = new System.Drawing.Point(2, 15);
 			this.maxSailSpeedInput.Margin = new System.Windows.Forms.Padding(2);
 			this.maxSailSpeedInput.Name = "maxSailSpeedInput";
-			this.maxSailSpeedInput.Size = new System.Drawing.Size(292, 20);
+			this.maxSailSpeedInput.Size = new System.Drawing.Size(323, 20);
 			this.maxSailSpeedInput.TabIndex = 0;
 			// 
 			// groupBox13
@@ -276,7 +278,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox13.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox13.Name = "groupBox13";
 			this.groupBox13.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox13.Size = new System.Drawing.Size(296, 41);
+			this.groupBox13.Size = new System.Drawing.Size(327, 41);
 			this.groupBox13.TabIndex = 7;
 			this.groupBox13.TabStop = false;
 			this.groupBox13.Text = "Maximale Geschwindigkeit mit Motor in km/h";
@@ -287,7 +289,7 @@ namespace MLZ_RentalBoatManager
 			this.maxMotorSpeedInput.Location = new System.Drawing.Point(2, 15);
 			this.maxMotorSpeedInput.Margin = new System.Windows.Forms.Padding(2);
 			this.maxMotorSpeedInput.Name = "maxMotorSpeedInput";
-			this.maxMotorSpeedInput.Size = new System.Drawing.Size(292, 20);
+			this.maxMotorSpeedInput.Size = new System.Drawing.Size(323, 20);
 			this.maxMotorSpeedInput.TabIndex = 0;
 			// 
 			// groupBox12
@@ -298,7 +300,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox12.Name = "groupBox12";
 			this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox12.Size = new System.Drawing.Size(296, 41);
+			this.groupBox12.Size = new System.Drawing.Size(327, 41);
 			this.groupBox12.TabIndex = 6;
 			this.groupBox12.TabStop = false;
 			this.groupBox12.Text = "Anzahl Personen";
@@ -309,7 +311,7 @@ namespace MLZ_RentalBoatManager
 			this.numberOfPersonInput.Location = new System.Drawing.Point(2, 15);
 			this.numberOfPersonInput.Margin = new System.Windows.Forms.Padding(2);
 			this.numberOfPersonInput.Name = "numberOfPersonInput";
-			this.numberOfPersonInput.Size = new System.Drawing.Size(292, 20);
+			this.numberOfPersonInput.Size = new System.Drawing.Size(323, 20);
 			this.numberOfPersonInput.TabIndex = 0;
 			// 
 			// groupBox11
@@ -320,7 +322,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox11.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox11.Name = "groupBox11";
 			this.groupBox11.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox11.Size = new System.Drawing.Size(296, 41);
+			this.groupBox11.Size = new System.Drawing.Size(327, 41);
 			this.groupBox11.TabIndex = 5;
 			this.groupBox11.TabStop = false;
 			this.groupBox11.Text = "Miete/Tag in CHF";
@@ -331,7 +333,7 @@ namespace MLZ_RentalBoatManager
 			this.rentPerDayInput.Location = new System.Drawing.Point(2, 15);
 			this.rentPerDayInput.Margin = new System.Windows.Forms.Padding(2);
 			this.rentPerDayInput.Name = "rentPerDayInput";
-			this.rentPerDayInput.Size = new System.Drawing.Size(292, 20);
+			this.rentPerDayInput.Size = new System.Drawing.Size(323, 20);
 			this.rentPerDayInput.TabIndex = 0;
 			// 
 			// groupBox8
@@ -344,7 +346,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox8.Name = "groupBox8";
 			this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox8.Size = new System.Drawing.Size(296, 41);
+			this.groupBox8.Size = new System.Drawing.Size(327, 41);
 			this.groupBox8.TabIndex = 4;
 			this.groupBox8.TabStop = false;
 			this.groupBox8.Text = "Länge/Breite/Höhe in Meter";
@@ -357,7 +359,7 @@ namespace MLZ_RentalBoatManager
 			this.heightInput.Location = new System.Drawing.Point(194, 15);
 			this.heightInput.Margin = new System.Windows.Forms.Padding(2);
 			this.heightInput.Name = "heightInput";
-			this.heightInput.Size = new System.Drawing.Size(100, 20);
+			this.heightInput.Size = new System.Drawing.Size(131, 20);
 			this.heightInput.TabIndex = 0;
 			// 
 			// widthInput
@@ -368,7 +370,7 @@ namespace MLZ_RentalBoatManager
 			this.widthInput.Location = new System.Drawing.Point(98, 15);
 			this.widthInput.Margin = new System.Windows.Forms.Padding(2);
 			this.widthInput.Name = "widthInput";
-			this.widthInput.Size = new System.Drawing.Size(99, 20);
+			this.widthInput.Size = new System.Drawing.Size(130, 20);
 			this.widthInput.TabIndex = 0;
 			// 
 			// lengthInput
@@ -379,7 +381,7 @@ namespace MLZ_RentalBoatManager
 			this.lengthInput.Location = new System.Drawing.Point(2, 15);
 			this.lengthInput.Margin = new System.Windows.Forms.Padding(2);
 			this.lengthInput.Name = "lengthInput";
-			this.lengthInput.Size = new System.Drawing.Size(99, 20);
+			this.lengthInput.Size = new System.Drawing.Size(130, 20);
 			this.lengthInput.TabIndex = 0;
 			// 
 			// groupBox7
@@ -390,7 +392,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox7.Name = "groupBox7";
 			this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox7.Size = new System.Drawing.Size(296, 41);
+			this.groupBox7.Size = new System.Drawing.Size(327, 41);
 			this.groupBox7.TabIndex = 4;
 			this.groupBox7.TabStop = false;
 			this.groupBox7.Text = "Nummernschild";
@@ -401,7 +403,7 @@ namespace MLZ_RentalBoatManager
 			this.licensePlateInput.Location = new System.Drawing.Point(2, 15);
 			this.licensePlateInput.Margin = new System.Windows.Forms.Padding(2);
 			this.licensePlateInput.Name = "licensePlateInput";
-			this.licensePlateInput.Size = new System.Drawing.Size(292, 20);
+			this.licensePlateInput.Size = new System.Drawing.Size(323, 20);
 			this.licensePlateInput.TabIndex = 0;
 			// 
 			// groupBox6
@@ -412,7 +414,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox6.Name = "groupBox6";
 			this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox6.Size = new System.Drawing.Size(296, 41);
+			this.groupBox6.Size = new System.Drawing.Size(327, 41);
 			this.groupBox6.TabIndex = 4;
 			this.groupBox6.TabStop = false;
 			this.groupBox6.Text = "Leistung in PS";
@@ -423,7 +425,7 @@ namespace MLZ_RentalBoatManager
 			this.powerInput.Location = new System.Drawing.Point(2, 15);
 			this.powerInput.Margin = new System.Windows.Forms.Padding(2);
 			this.powerInput.Name = "powerInput";
-			this.powerInput.Size = new System.Drawing.Size(292, 20);
+			this.powerInput.Size = new System.Drawing.Size(323, 20);
 			this.powerInput.TabIndex = 0;
 			// 
 			// groupBox5
@@ -434,7 +436,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox5.Name = "groupBox5";
 			this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox5.Size = new System.Drawing.Size(296, 41);
+			this.groupBox5.Size = new System.Drawing.Size(327, 41);
 			this.groupBox5.TabIndex = 4;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Farbe";
@@ -446,7 +448,7 @@ namespace MLZ_RentalBoatManager
 			this.colorDropdown.Location = new System.Drawing.Point(2, 15);
 			this.colorDropdown.Margin = new System.Windows.Forms.Padding(2);
 			this.colorDropdown.Name = "colorDropdown";
-			this.colorDropdown.Size = new System.Drawing.Size(292, 21);
+			this.colorDropdown.Size = new System.Drawing.Size(323, 21);
 			this.colorDropdown.TabIndex = 0;
 			// 
 			// groupBox4
@@ -457,7 +459,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox4.Size = new System.Drawing.Size(296, 41);
+			this.groupBox4.Size = new System.Drawing.Size(327, 41);
 			this.groupBox4.TabIndex = 4;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Kategorie";
@@ -469,7 +471,7 @@ namespace MLZ_RentalBoatManager
 			this.categoryDropdown.Location = new System.Drawing.Point(2, 15);
 			this.categoryDropdown.Margin = new System.Windows.Forms.Padding(2);
 			this.categoryDropdown.Name = "categoryDropdown";
-			this.categoryDropdown.Size = new System.Drawing.Size(292, 21);
+			this.categoryDropdown.Size = new System.Drawing.Size(323, 21);
 			this.categoryDropdown.TabIndex = 1;
 			// 
 			// groupBox3
@@ -480,7 +482,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox3.Size = new System.Drawing.Size(296, 41);
+			this.groupBox3.Size = new System.Drawing.Size(327, 41);
 			this.groupBox3.TabIndex = 3;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Modell";
@@ -491,7 +493,7 @@ namespace MLZ_RentalBoatManager
 			this.modelInput.Location = new System.Drawing.Point(2, 15);
 			this.modelInput.Margin = new System.Windows.Forms.Padding(2);
 			this.modelInput.Name = "modelInput";
-			this.modelInput.Size = new System.Drawing.Size(292, 20);
+			this.modelInput.Size = new System.Drawing.Size(323, 20);
 			this.modelInput.TabIndex = 0;
 			// 
 			// groupBox2
@@ -502,7 +504,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox2.Size = new System.Drawing.Size(296, 41);
+			this.groupBox2.Size = new System.Drawing.Size(327, 41);
 			this.groupBox2.TabIndex = 2;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Marke";
@@ -513,18 +515,15 @@ namespace MLZ_RentalBoatManager
 			this.brandInput.Location = new System.Drawing.Point(2, 15);
 			this.brandInput.Margin = new System.Windows.Forms.Padding(2);
 			this.brandInput.Name = "brandInput";
-			this.brandInput.Size = new System.Drawing.Size(292, 20);
+			this.brandInput.Size = new System.Drawing.Size(323, 20);
 			this.brandInput.TabIndex = 0;
 			// 
 			// groupBox9
 			// 
-			this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox9.Controls.Add(this.imageBox);
 			this.groupBox9.Location = new System.Drawing.Point(3, 3);
 			this.groupBox9.Name = "groupBox9";
-			this.groupBox9.Size = new System.Drawing.Size(377, 485);
+			this.groupBox9.Size = new System.Drawing.Size(418, 479);
 			this.groupBox9.TabIndex = 3;
 			this.groupBox9.TabStop = false;
 			this.groupBox9.Text = "Bild";
@@ -535,34 +534,44 @@ namespace MLZ_RentalBoatManager
 			this.imageBox.Location = new System.Drawing.Point(3, 16);
 			this.imageBox.Margin = new System.Windows.Forms.Padding(2);
 			this.imageBox.Name = "imageBox";
-			this.imageBox.Size = new System.Drawing.Size(371, 466);
+			this.imageBox.Size = new System.Drawing.Size(412, 460);
 			this.imageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.imageBox.TabIndex = 2;
 			this.imageBox.TabStop = false;
 			// 
 			// selectImageBtn
 			// 
-			this.selectImageBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.selectImageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.selectImageBtn.Location = new System.Drawing.Point(0, 494);
+			this.selectImageBtn.Location = new System.Drawing.Point(6, 484);
 			this.selectImageBtn.Name = "selectImageBtn";
-			this.selectImageBtn.Size = new System.Drawing.Size(380, 53);
+			this.selectImageBtn.Size = new System.Drawing.Size(409, 28);
 			this.selectImageBtn.TabIndex = 2;
 			this.selectImageBtn.Text = "Bild auswählen";
 			this.selectImageBtn.UseVisualStyleBackColor = true;
 			this.selectImageBtn.Click += new System.EventHandler(this.selectImageBtn_Click);
 			// 
+			// deleteImageBtn
+			// 
+			this.deleteImageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.deleteImageBtn.Location = new System.Drawing.Point(6, 510);
+			this.deleteImageBtn.Name = "deleteImageBtn";
+			this.deleteImageBtn.Size = new System.Drawing.Size(409, 28);
+			this.deleteImageBtn.TabIndex = 4;
+			this.deleteImageBtn.Text = "Bild entfernen";
+			this.deleteImageBtn.UseVisualStyleBackColor = true;
+			this.deleteImageBtn.Click += new System.EventHandler(this.deleteImageBtn_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(984, 547);
+			this.ClientSize = new System.Drawing.Size(1086, 541);
 			this.Controls.Add(this.splitContainer1);
 			this.Margin = new System.Windows.Forms.Padding(2);
 			this.MinimumSize = new System.Drawing.Size(1000, 398);
 			this.Name = "Form1";
 			this.Text = "Form1";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
@@ -640,6 +649,7 @@ namespace MLZ_RentalBoatManager
 		private System.Windows.Forms.Button selectImageBtn;
 		private System.Windows.Forms.GroupBox groupBox10;
 		private System.Windows.Forms.ListBox boatsFormList;
+		private Button deleteImageBtn;
 	}
 }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
@@ -29,15 +28,19 @@ namespace MLZ_RentalBoatManager
 			foreach (GroupBox groupBox in detailGroupBox.Controls.OfType<GroupBox>())
             {
                 foreach (TextBox control in groupBox.Controls.OfType<TextBox>())
-                    control.TextChanged += new System.EventHandler(OnContentChanged);
+                    control.TextChanged += new EventHandler(OnContentChanged);
 
                 foreach (ComboBox control in groupBox.Controls.OfType<ComboBox>())
-                    control.TextChanged += new System.EventHandler(OnContentChanged);
+                    control.TextChanged += new EventHandler(OnContentChanged);
 			}
-			imageBox.BackgroundImageChanged += new System.EventHandler(OnContentChanged);
 			saveEntryBtn.Enabled = false;
 			deleteEntryBtn.Enabled = false;
 			UpdateList();
+		}
+
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			Controller.XmlSerializeBoatsBindingList(BoatsList);
 		}
 
 		private void boatsFormList_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,7 +66,12 @@ namespace MLZ_RentalBoatManager
 				maxSailSpeedInput.Text = BoatsList[index].MaxSailSpeed.ToString();
 			}
 
-            saveEntryBtn.Enabled = false;
+			if (imageBox.ImageLocation != "")
+				deleteImageBtn.Enabled = true;
+			else
+				deleteImageBtn.Enabled = false;
+
+			saveEntryBtn.Enabled = false;
             CancelOnChangeEvent = false;
         }
 
@@ -108,8 +116,16 @@ namespace MLZ_RentalBoatManager
 			{
 				dialog.OpenFile();
 				imageBox.ImageLocation = dialog.FileName;
+				OnContentChanged(this, null);
 			}
 			dialog.Dispose();
+		}
+
+		private void deleteImageBtn_Click(object sender, EventArgs e)
+		{
+			imageBox.ImageLocation = "";
+			OnContentChanged(this, null);
+			deleteImageBtn.Enabled = false;
 		}
 
 
@@ -140,6 +156,11 @@ namespace MLZ_RentalBoatManager
 
 			if(BoatsList.Count > 0)
 				saveEntryBtn.Enabled = true;
+
+			if (imageBox.ImageLocation != "")
+				deleteImageBtn.Enabled = true;
+			else
+				deleteImageBtn.Enabled = false;
 		}
 
 		public void WriteDetailsInBoat(Boat boat)
