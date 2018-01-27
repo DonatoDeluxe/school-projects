@@ -36,7 +36,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox10 = new System.Windows.Forms.GroupBox();
 			this.boatsFormList = new System.Windows.Forms.ListBox();
 			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.detailGroupBox = new System.Windows.Forms.GroupBox();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
 			this.deleteEntryBtn = new System.Windows.Forms.Button();
 			this.newEntryBtn = new System.Windows.Forms.Button();
@@ -77,7 +77,7 @@ namespace MLZ_RentalBoatManager
 			this.splitContainer2.Panel1.SuspendLayout();
 			this.splitContainer2.Panel2.SuspendLayout();
 			this.splitContainer2.SuspendLayout();
-			this.groupBox1.SuspendLayout();
+			this.detailGroupBox.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.groupBox14.SuspendLayout();
 			this.groupBox13.SuspendLayout();
@@ -147,7 +147,7 @@ namespace MLZ_RentalBoatManager
 			// 
 			// splitContainer2.Panel1
 			// 
-			this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
+			this.splitContainer2.Panel1.Controls.Add(this.detailGroupBox);
 			this.splitContainer2.Panel1MinSize = 300;
 			// 
 			// splitContainer2.Panel2
@@ -160,29 +160,29 @@ namespace MLZ_RentalBoatManager
 			this.splitContainer2.SplitterWidth = 3;
 			this.splitContainer2.TabIndex = 0;
 			// 
-			// groupBox1
+			// detailGroupBox
 			// 
-			this.groupBox1.Controls.Add(this.flowLayoutPanel1);
-			this.groupBox1.Controls.Add(this.groupBox14);
-			this.groupBox1.Controls.Add(this.groupBox13);
-			this.groupBox1.Controls.Add(this.groupBox12);
-			this.groupBox1.Controls.Add(this.groupBox11);
-			this.groupBox1.Controls.Add(this.groupBox8);
-			this.groupBox1.Controls.Add(this.groupBox7);
-			this.groupBox1.Controls.Add(this.groupBox6);
-			this.groupBox1.Controls.Add(this.groupBox5);
-			this.groupBox1.Controls.Add(this.groupBox4);
-			this.groupBox1.Controls.Add(this.groupBox3);
-			this.groupBox1.Controls.Add(this.groupBox2);
-			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox1.Location = new System.Drawing.Point(0, 0);
-			this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox1.Size = new System.Drawing.Size(300, 547);
-			this.groupBox1.TabIndex = 2;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Details";
+			this.detailGroupBox.Controls.Add(this.flowLayoutPanel1);
+			this.detailGroupBox.Controls.Add(this.groupBox14);
+			this.detailGroupBox.Controls.Add(this.groupBox13);
+			this.detailGroupBox.Controls.Add(this.groupBox12);
+			this.detailGroupBox.Controls.Add(this.groupBox11);
+			this.detailGroupBox.Controls.Add(this.groupBox8);
+			this.detailGroupBox.Controls.Add(this.groupBox7);
+			this.detailGroupBox.Controls.Add(this.groupBox6);
+			this.detailGroupBox.Controls.Add(this.groupBox5);
+			this.detailGroupBox.Controls.Add(this.groupBox4);
+			this.detailGroupBox.Controls.Add(this.groupBox3);
+			this.detailGroupBox.Controls.Add(this.groupBox2);
+			this.detailGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.detailGroupBox.Location = new System.Drawing.Point(0, 0);
+			this.detailGroupBox.Margin = new System.Windows.Forms.Padding(2);
+			this.detailGroupBox.Name = "detailGroupBox";
+			this.detailGroupBox.Padding = new System.Windows.Forms.Padding(2);
+			this.detailGroupBox.Size = new System.Drawing.Size(300, 547);
+			this.detailGroupBox.TabIndex = 2;
+			this.detailGroupBox.TabStop = false;
+			this.detailGroupBox.Text = "Details";
 			// 
 			// flowLayoutPanel1
 			// 
@@ -524,7 +524,7 @@ namespace MLZ_RentalBoatManager
 			this.groupBox9.Controls.Add(this.imageBox);
 			this.groupBox9.Location = new System.Drawing.Point(3, 3);
 			this.groupBox9.Name = "groupBox9";
-			this.groupBox9.Size = new System.Drawing.Size(376, 485);
+			this.groupBox9.Size = new System.Drawing.Size(377, 485);
 			this.groupBox9.TabIndex = 3;
 			this.groupBox9.TabStop = false;
 			this.groupBox9.Text = "Bild";
@@ -535,7 +535,7 @@ namespace MLZ_RentalBoatManager
 			this.imageBox.Location = new System.Drawing.Point(3, 16);
 			this.imageBox.Margin = new System.Windows.Forms.Padding(2);
 			this.imageBox.Name = "imageBox";
-			this.imageBox.Size = new System.Drawing.Size(370, 466);
+			this.imageBox.Size = new System.Drawing.Size(371, 466);
 			this.imageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.imageBox.TabIndex = 2;
 			this.imageBox.TabStop = false;
@@ -547,7 +547,7 @@ namespace MLZ_RentalBoatManager
 			this.selectImageBtn.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.selectImageBtn.Location = new System.Drawing.Point(0, 494);
 			this.selectImageBtn.Name = "selectImageBtn";
-			this.selectImageBtn.Size = new System.Drawing.Size(379, 53);
+			this.selectImageBtn.Size = new System.Drawing.Size(380, 53);
 			this.selectImageBtn.TabIndex = 2;
 			this.selectImageBtn.Text = "Bild auswählen";
 			this.selectImageBtn.UseVisualStyleBackColor = true;
@@ -573,7 +573,7 @@ namespace MLZ_RentalBoatManager
 			this.splitContainer2.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
 			this.splitContainer2.ResumeLayout(false);
-			this.groupBox1.ResumeLayout(false);
+			this.detailGroupBox.ResumeLayout(false);
 			this.flowLayoutPanel1.ResumeLayout(false);
 			this.flowLayoutPanel1.PerformLayout();
 			this.groupBox14.ResumeLayout(false);
@@ -599,14 +599,14 @@ namespace MLZ_RentalBoatManager
 			this.groupBox9.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
 			this.ResumeLayout(false);
-			
+
 		}
 
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox detailGroupBox;
         private System.Windows.Forms.TextBox brandInput;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;

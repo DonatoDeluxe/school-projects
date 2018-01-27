@@ -12,26 +12,21 @@ namespace MLZ_RentalBoatManager
         [XmlArray("Boats")]
         [XmlArrayItem("Boat", typeof(Boat))]
         public BindingList<Boat> BoatsList { get; set; }
-        public Boolean CancelEvent { get; set; }
+        public Boolean CancelOnChangeEvent { get; set; }
 
         public Form1()
         {
 			InitializeComponent();
 
             BoatsList = new BindingList<Boat>();
+			//BoatsList.ListChanged += new System.EventHandler(OnListChanged);
             categoryDropdown.DataSource = Enum.GetValues(typeof(Category));
             colorDropdown.DataSource = Enum.GetValues(typeof(Color));
         }
 
-        private void UpdateList()
-        {
-            boatsFormList.DataSource = null;
-            boatsFormList.DataSource = BoatsList;
-		}
-
 		private void Form1_Load(object sender, EventArgs e)
         {
-            foreach (GroupBox groupBox in detailGroupBox.Controls.OfType<GroupBox>())
+			foreach (GroupBox groupBox in detailGroupBox.Controls.OfType<GroupBox>())
             {
                 foreach (TextBox control in groupBox.Controls.OfType<TextBox>())
                 {
@@ -41,23 +36,9 @@ namespace MLZ_RentalBoatManager
                 {
                     control.TextChanged += new System.EventHandler(OnContentChanged);
                 }
-            }
-            UpdateList();
-		}
-
-		void BoatsList_ListChanged(object sender, ListChangedEventArgs e)
-		{
-			MessageBox.Show("e.ListChangedType.ToString()");
-			if (BoatsList.Count() > 0)
-			{
-				deleteEntryBtn.Enabled = true;
-				saveEntryBtn.Enabled = true;
 			}
-			else
-			{
-				deleteEntryBtn.Enabled = false;
-				saveEntryBtn.Enabled = false;
-			}
+			imageBox.BackgroundImageChanged += new System.EventHandler(OnContentChanged);
+			UpdateList();
 		}
 
 		private void boatsFormList_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,7 +46,7 @@ namespace MLZ_RentalBoatManager
 			int index = boatsFormList.SelectedIndex;
 			if (index >= 0)
 			{
-                CancelEvent = true;
+                CancelOnChangeEvent = true;
                 imageBox.ImageLocation = BoatsList[index].ImagePath;
 				brandInput.Text = BoatsList[index].Brand;
 				brandInput.Text = BoatsList[index].Brand;
@@ -84,7 +65,7 @@ namespace MLZ_RentalBoatManager
 			}
 
             saveEntryBtn.Enabled = false;
-            CancelEvent = false;
+            CancelOnChangeEvent = false;
         }
 
 		private void saveEntryBtn_Click(object sender, EventArgs e)
@@ -95,48 +76,7 @@ namespace MLZ_RentalBoatManager
 				int index = boatsFormList.SelectedIndex;
 				if (index >= 0)
 				{
-					if (BoatsList[index].ImagePath != imageBox.ImageLocation)
-						BoatsList[index].ImagePath = imageBox.ImageLocation;
-
-					if (BoatsList[index].Brand != brandInput.Text)
-						BoatsList[index].Brand = brandInput.Text;
-
-					if (BoatsList[index].Model != modelInput.Text)
-						BoatsList[index].Model = modelInput.Text;
-
-					if (BoatsList[index].Category != (Category)categoryDropdown.SelectedIndex)
-						BoatsList[index].Category = (Category)categoryDropdown.SelectedIndex;
-
-					if (BoatsList[index].Color != (Color)colorDropdown.SelectedIndex)
-						BoatsList[index].Color = (Color)colorDropdown.SelectedIndex;
-
-					if (BoatsList[index].Power != float.Parse(powerInput.Text))
-						BoatsList[index].Power = float.Parse(powerInput.Text);
-
-					if (BoatsList[index].LicensePlate != licensePlateInput.Text)
-						BoatsList[index].LicensePlate = licensePlateInput.Text;
-
-					if (BoatsList[index].Length != float.Parse(lengthInput.Text))
-						BoatsList[index].Length = float.Parse(lengthInput.Text);
-
-					if (BoatsList[index].Width != float.Parse(widthInput.Text))
-						BoatsList[index].Width = float.Parse(widthInput.Text);
-
-					if (BoatsList[index].Height != float.Parse(heightInput.Text))
-						BoatsList[index].Height = float.Parse(heightInput.Text);
-
-					if (BoatsList[index].RentPerDay != float.Parse(rentPerDayInput.Text))
-						BoatsList[index].RentPerDay = float.Parse(rentPerDayInput.Text);
-
-					if (BoatsList[index].NumberOfPerson != int.Parse(numberOfPersonInput.Text))
-						BoatsList[index].NumberOfPerson = int.Parse(numberOfPersonInput.Text);
-
-					if (BoatsList[index].MaxMotorSpeed != int.Parse(maxMotorSpeedInput.Text))
-						BoatsList[index].MaxMotorSpeed = int.Parse(maxMotorSpeedInput.Text);
-
-					if (BoatsList[index].MaxSailSpeed != int.Parse(maxSailSpeedInput.Text))
-						BoatsList[index].MaxSailSpeed = int.Parse(maxSailSpeedInput.Text);
-
+					WriteDetailsInBoat(BoatsList[index]);
 					UpdateList();
 				}
 			}
@@ -144,23 +84,9 @@ namespace MLZ_RentalBoatManager
 
 		private void newEntryBtn_Click(object sender, EventArgs e)
 		{
-			BoatsList.Add(new Boat()
-			{
-				ImagePath = imageBox.ImageLocation,
-				Brand = brandInput.Text,
-				Model = modelInput.Text,
-				Category = (Category)categoryDropdown.SelectedIndex,
-				Color = (Color)colorDropdown.SelectedIndex,
-				Power = float.Parse(powerInput.Text),
-				LicensePlate = licensePlateInput.Text,
-				Length = float.Parse(lengthInput.Text),
-				Width = float.Parse(widthInput.Text),
-				Height = float.Parse(heightInput.Text),
-				RentPerDay = float.Parse(rentPerDayInput.Text),
-				NumberOfPerson = int.Parse(numberOfPersonInput.Text),
-				MaxMotorSpeed = int.Parse(maxMotorSpeedInput.Text),
-				MaxSailSpeed = int.Parse(maxSailSpeedInput.Text)
-			});
+			Boat boat = new Boat();
+			WriteDetailsInBoat(boat);
+			BoatsList.Add(boat);
 			boatsFormList.SelectedIndex = BoatsList.Count() - 1;
 		}
 
@@ -172,6 +98,8 @@ namespace MLZ_RentalBoatManager
 				if (confirmResult == DialogResult.Yes)
 				{
 					BoatsList.Remove((Boat)boatsFormList.SelectedItem);
+					if(BoatsList.Count == 0)
+						deleteEntryBtn.Enabled = false;
 				}
 			}
 		}
@@ -189,10 +117,82 @@ namespace MLZ_RentalBoatManager
 			dialog.Dispose();
 		}
 
+
+
+
+
+
+
+
+		private void UpdateList()
+		{
+			boatsFormList.DataSource = null;
+			boatsFormList.DataSource = BoatsList;
+		}
+
+		private void OnListChanged(object sender, ListChangedEventArgs e)
+		{
+			if (BoatsList.Count() > 0)
+				deleteEntryBtn.Enabled = true;
+			else
+				deleteEntryBtn.Enabled = false;
+		}
+
 		private void OnContentChanged(object sender, EventArgs e)
 		{
-            if (CancelEvent) return;
-            saveEntryBtn.Enabled = true;
-        }
+			if (CancelOnChangeEvent)
+				return;
+
+			if(BoatsList.Count > 0)
+				saveEntryBtn.Enabled = true;
+		}
+
+		public void WriteDetailsInBoat(Boat boat)
+		{
+			float resFloat = 0;
+			int resInt = 0;
+
+			if (boat.ImagePath != imageBox.ImageLocation)
+				boat.ImagePath = imageBox.ImageLocation;
+
+			if (boat.Brand != brandInput.Text)
+				boat.Brand = brandInput.Text;
+
+			if (boat.Model != modelInput.Text)
+				boat.Model = modelInput.Text;
+
+			if (boat.Category != (Category)categoryDropdown.SelectedIndex)
+				boat.Category = (Category)categoryDropdown.SelectedIndex;
+
+			if (boat.Color != (Color)colorDropdown.SelectedIndex)
+				boat.Color = (Color)colorDropdown.SelectedIndex;
+
+			if (float.TryParse(powerInput.Text, out resFloat) && boat.Power != resFloat)
+				boat.Power = resFloat;
+
+			if (boat.LicensePlate != licensePlateInput.Text)
+				boat.LicensePlate = licensePlateInput.Text;
+
+			if (float.TryParse(lengthInput.Text, out resFloat) && boat.Length != resFloat)
+				boat.Length = resFloat;
+
+			if (float.TryParse(widthInput.Text, out resFloat) && boat.Width != resFloat)
+				boat.Width = resFloat;
+
+			if (float.TryParse(heightInput.Text, out resFloat) && boat.Height != resFloat)
+				boat.Height = resFloat;
+
+			if (float.TryParse(rentPerDayInput.Text, out resFloat) && boat.RentPerDay != resFloat)
+				boat.RentPerDay = resFloat;
+
+			if (int.TryParse(numberOfPersonInput.Text, out resInt) && boat.NumberOfPerson != resInt)
+				boat.NumberOfPerson = resInt;
+
+			if (int.TryParse(maxMotorSpeedInput.Text, out resInt) && boat.MaxMotorSpeed != resInt)
+				boat.MaxMotorSpeed = resInt;
+
+			if (int.TryParse(maxSailSpeedInput.Text, out resInt) && boat.MaxSailSpeed != resInt)
+				boat.MaxSailSpeed = resInt;
+		}
 	}
 }
