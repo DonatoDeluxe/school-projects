@@ -19,25 +19,24 @@ namespace MLZ_RentalBoatManager
 			InitializeComponent();
 
             BoatsList = new BindingList<Boat>();
-			//BoatsList.ListChanged += new System.EventHandler(OnListChanged);
             categoryDropdown.DataSource = Enum.GetValues(typeof(Category));
             colorDropdown.DataSource = Enum.GetValues(typeof(Color));
         }
 
 		private void Form1_Load(object sender, EventArgs e)
         {
+			BoatsList.ListChanged += new ListChangedEventHandler(OnListChanged);
 			foreach (GroupBox groupBox in detailGroupBox.Controls.OfType<GroupBox>())
             {
                 foreach (TextBox control in groupBox.Controls.OfType<TextBox>())
-                {
                     control.TextChanged += new System.EventHandler(OnContentChanged);
-                }
+
                 foreach (ComboBox control in groupBox.Controls.OfType<ComboBox>())
-                {
                     control.TextChanged += new System.EventHandler(OnContentChanged);
-                }
 			}
 			imageBox.BackgroundImageChanged += new System.EventHandler(OnContentChanged);
+			saveEntryBtn.Enabled = false;
+			deleteEntryBtn.Enabled = false;
 			UpdateList();
 		}
 
@@ -96,11 +95,7 @@ namespace MLZ_RentalBoatManager
 			{
 				var confirmResult = MessageBox.Show("Wollen Sie diesen Eintrag wirklich löschen?", "Löschbestätigung", MessageBoxButtons.YesNo);
 				if (confirmResult == DialogResult.Yes)
-				{
 					BoatsList.Remove((Boat)boatsFormList.SelectedItem);
-					if(BoatsList.Count == 0)
-						deleteEntryBtn.Enabled = false;
-				}
 			}
 		}
 
