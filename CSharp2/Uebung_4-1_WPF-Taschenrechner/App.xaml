@@ -1,0 +1,9 @@
+﻿<Application x:Class="Uebung_4_1_WPF_Taschenrechner.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Uebung_4_1_WPF_Taschenrechner"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

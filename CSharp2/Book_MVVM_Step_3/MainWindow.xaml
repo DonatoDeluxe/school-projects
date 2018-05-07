@@ -1,0 +1,35 @@
+﻿<Window x:Class="Book_MVVM_Step_3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Book_MVVM_Step_3"
+        xmlns:localviewmodel="clr-namespace:Book_MVVM_Step_3.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="216.821" Width="363.399" FontSize="16">
+    <Window.DataContext>
+        <localviewmodel:BookViewModel />
+    </Window.DataContext>
+    <Grid x:Name="MainGrid">
+        <Grid.Background>
+            <RadialGradientBrush GradientOrigin="0.5,0.5" RadiusX="0.7" RadiusY="0.7" Opacity="0.95">
+                <GradientStop Color="Red"/>
+                <GradientStop Color="#FFFDFF00" Offset="0.16"/>
+                <GradientStop Color="#FF06FF00" Offset="0.32"/>
+                <GradientStop Color="#FF00FFE8" Offset="0.48"/>
+                <GradientStop Color="#FF000CFF" Offset="0.64"/>
+                <GradientStop Color="#FFFF00F7" Offset="0.80"/>
+                <GradientStop Color="#FFFF0000" Offset="1.00"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Label Content="Bücherverwaltung - MVVM Schritt 1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Titel:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="Autor:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <Label Content="Preis:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Path=Title, Mode=OneWay}" Name="lbl_Title" HorizontalAlignment="Left" Margin="92,41,0,0" VerticalAlignment="Top" Width="227"/>
+        <Label Content="{Binding Path=Author, Mode=OneWay}" Name="lbl_Author" HorizontalAlignment="Left" Margin="92,73,0,0" VerticalAlignment="Top" Width="227"/>
+        <Label Content="{Binding Path=Price, Mode=OneWay}" Name="lbl_Price" HorizontalAlignment="Left" Margin="92,103,0,0" VerticalAlignment="Top" Width="227"/>
+        <Button Content="Titel setzen" Name="btn_SetTitle" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="130" HorizontalContentAlignment="Center" Click="btn_SetTitle_Click"/>
+
+    </Grid>
+</Window>
