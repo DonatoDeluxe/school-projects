@@ -1,0 +1,61 @@
+﻿<Window x:Class="Simulation_eines_Wärmerückgewinnungsgerätes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simulation_eines_Wärmerückgewinnungsgerätes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="0" Width="0" FontSize="16" FontWeight="Bold" MinWidth="380" MinHeight="420">
+    <Grid Margin="10">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
+                <Label Content="Wärmerückgewinnungsgerät" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Ellipse Height="20" Stroke="Black" Width="20">
+                        <Ellipse.Fill>
+                            <RadialGradientBrush>
+                                <GradientStop Color="Orange" Offset="0.5"/>
+                                <GradientStop Color="Red" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Button Name="btn_Off" Content="Aus" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150" Click="btn_Off_Click"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Ellipse Height="20" Stroke="Black" Width="20">
+                        <Ellipse.Fill>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#FFFFFF41" Offset="0.6"/>
+                                <GradientStop Color="Yellow" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Button Name="btn_Level1" Content="Stufe 1" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Ellipse Height="20" Stroke="Black" Width="20">
+                        <Ellipse.Fill>
+                            <RadialGradientBrush>
+                                <GradientStop Color="Lime" Offset="0.6"/>
+                                <GradientStop Color="#FF007600" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Button Name="btn_Level2" Content="Stufe 2" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Ellipse Fill="#FFF4F4F5" Height="20" Stroke="Black" Width="20"/>
+                    <Button Name="btn_Level3" Content="Stufe 3" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" Margin="0,10,0,0">
+                <Label Content="Betriebsdaten" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
+                <Label Content="Drehzahl: 0 U/min" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                <Label Content="Strom: 0 mA" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                <Label Content="Spannung: 0 V" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                <Label Content="Leistung: 0 W" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                <Button Name="btn_LogMeasurements" Content="Messungen aufnehmen" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
