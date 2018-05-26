@@ -6,47 +6,62 @@
         xmlns:local="clr-namespace:Simulation_eines_Wärmerückgewinnungsgerätes"
         mc:Ignorable="d"
         Title="MainWindow" Height="0" Width="0" FontSize="16" FontWeight="Bold" MinWidth="380" MinHeight="420">
-    <Grid Margin="10">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="Black" Offset="1"/>
+            <GradientStop Color="White"/>
+            <GradientStop Color="#FF542705" Offset="0.95"/>
+            <GradientStop Color="#FF00FF15" Offset="0.6"/>
+            <GradientStop Color="#FF007A0A" Offset="0.8"/>
+            <GradientStop Color="#FF8D9BFF" Offset="0.5"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid >
+        <Grid.Background>
+            <RadialGradientBrush GradientOrigin="0.8,0" Center="0.8,0">
+                <GradientStop Color="#00FFDC00" Offset="1"/>
+                <GradientStop Color="#B7FFDC00"/>
+            </RadialGradientBrush>
+        </Grid.Background>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                <Label Content="Wärmerückgewinnungsgerät" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
-                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Ellipse Height="20" Stroke="Black" Width="20">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Orange" Offset="0.5"/>
-                                <GradientStop Color="Red" Offset="1"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Button Name="btn_Off" Content="Aus" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150" Click="btn_Off_Click"/>
-                </StackPanel>
-                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Ellipse Height="20" Stroke="Black" Width="20">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="#FFFFFF41" Offset="0.6"/>
-                                <GradientStop Color="Yellow" Offset="1"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Button Name="btn_Level1" Content="Stufe 1" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150"/>
-                </StackPanel>
-                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Ellipse Height="20" Stroke="Black" Width="20">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Lime" Offset="0.6"/>
-                                <GradientStop Color="#FF007600" Offset="1"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Button Name="btn_Level2" Content="Stufe 2" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150"/>
-                </StackPanel>
-                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Ellipse Fill="#FFF4F4F5" Height="20" Stroke="Black" Width="20"/>
-                    <Button Name="btn_Level3" Content="Stufe 3" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150"/>
-                </StackPanel>
+            <Label Content="Wärmerückgewinnungsgerät" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
+            <StackPanel x:Name="stackp_Levels" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" MinWidth="150" >
+                <Button Name="btn_Off" Content="Aus" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="btn_Off_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#FFD20000" Offset="0.55"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Name="btn_Level1" Content="Stufe 1" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="btn_Level1_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#FF828282" Offset="0.55"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Name="btn_Level2" Content="Stufe 2" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="btn_Level2_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#FF828282" Offset="0.55"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Name="btn_Level3" Content="Stufe 3" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="btn_Level3_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#FF828282" Offset="0.55"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </StackPanel>
             <StackPanel VerticalAlignment="Center" Margin="0,10,0,0">
                 <Label Content="Betriebsdaten" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
@@ -54,7 +69,15 @@
                 <Label Content="Strom: 0 mA" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
                 <Label Content="Spannung: 0 V" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
                 <Label Content="Leistung: 0 W" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-                <Button Name="btn_LogMeasurements" Content="Messungen aufnehmen" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150"/>
+                <Button Name="btn_LogMeasurements" Content="Messungen aufnehmen" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150" Click="btn_LogMeasurements_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#FFD20000" Offset="0.55"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </StackPanel>
         </StackPanel>
     </Grid>
