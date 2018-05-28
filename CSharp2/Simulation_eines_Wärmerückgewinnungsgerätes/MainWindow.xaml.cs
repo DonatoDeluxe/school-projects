@@ -52,7 +52,9 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
         // END OF COLORS---------------------------------------------------------------------------------------//
 
         private bool logFlag = false;
-        private static Timer secTimer = new Timer(1000);
+        private Timer logTimer = new Timer(1000);
+        private Timer fanTimer = new Timer(1000);
+        private DateTime prevSystemTime;
         private HeatRecoveryDevice hrDevice = new HeatRecoveryDevice();
 
         public MainWindow()
@@ -62,69 +64,96 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             btn_Level1.Click += OnLevelSelectionChanged;
             btn_Level2.Click += OnLevelSelectionChanged;
             btn_Level3.Click += OnLevelSelectionChanged;
+            SetFanTimer(1000 / 60);
         }
 
-        private static void SetTimer(int mSeconds)
+        private void SetLogTimer(int mSeconds)
         {
-            secTimer = null;
-            secTimer = new Timer(mSeconds);
-            secTimer.Elapsed += OnTimedEvent;
-            secTimer.AutoReset = true;
-            secTimer.Enabled = true;
+            if (logTimer != null)
+                logTimer.Stop();
+            logTimer = new Timer(mSeconds);
+            logTimer.Elapsed += OnLogTimerEvent;
+            logTimer.AutoReset = true;
+            logTimer.Start();
         }
 
-        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
+        private void SetFanTimer(int mSeconds)
         {
+            if(fanTimer != null)
+                fanTimer.Stop();
+            fanTimer = new Timer(mSeconds);
+            fanTimer.Elapsed += OnFanTimerEvent;
+            fanTimer.AutoReset = true;
+            fanTimer.Start();
+        }
+
+        private void OnLogTimerEvent(Object source, ElapsedEventArgs e)
+        {
+
             Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
                               e.SignalTime);
         }
 
+        private void OnFanTimerEvent(Object source, ElapsedEventArgs e)
+        {
+            this.Dispatcher.Invoke(
+                new Action(
+                    () => RotateFanImage(e.SignalTime)
+                )
+            );
+        }
+
+        public void RotateFanImage(DateTime currentSystemTime)
+        {
+            double rotationInDegrees = 0;
+            RotateTransform rotation = img_fan.RenderTransform as RotateTransform;
+            if (rotation != null)
+                rotationInDegrees = rotation.Angle;
+
+            if (prevSystemTime != null)
+            {
+                var mSecDiff = (currentSystemTime - prevSystemTime).Milliseconds;
+                var degrees = hrDevice.EngineSpeed * mSecDiff  * (360f / 60000f);
+                img_fan.RenderTransform = new RotateTransform(rotationInDegrees + degrees, 0.5, 0.5);
+            }
+
+            prevSystemTime = currentSystemTime;
+        }
+
         public void OnLevelSelectionChanged(object source, EventArgs eArgs)
         {
-            var btn = source as Button;
-            foreach (Button level in stackp_Levels.Children)
+            var source_btn = source as Button;
+            foreach (Button level_btn in stackp_Levels.Children)
             {
-                if (level == btn)
+                if (level_btn == source_btn)
                 {
-                    //level.IsEnabled = false;
-                    level.Background = lgb_Yellow;
+                    //level_btn.IsEnabled = false;
+                    level_btn.Background = lgb_Yellow;
                 }
                 else
                 {
-                    //level.IsEnabled = true;
-                    level.Background = lgb_White;
+                    //level_btn.IsEnabled = true;
+                    level_btn.Background = lgb_White;
                 }
             }
         }
 
-        private void btn_Off_Click(object sender, RoutedEventArgs e)
-        {
-            hrDevice.SelectedLevel = 0;
-        }
+        private void btn_Off_Click(object sender, RoutedEventArgs e) => hrDevice.SelectedLevel = 0;
 
-        private void btn_Level1_Click(object sender, RoutedEventArgs e)
-        {
-            hrDevice.SelectedLevel = 1;
-        }
+        private void btn_Level1_Click(object sender, RoutedEventArgs e) => hrDevice.SelectedLevel = 1;
 
-        private void btn_Level2_Click(object sender, RoutedEventArgs e)
-        {
-            hrDevice.SelectedLevel = 2;
-        }
+        private void btn_Level2_Click(object sender, RoutedEventArgs e) => hrDevice.SelectedLevel = 2;
 
-        private void btn_Level3_Click(object sender, RoutedEventArgs e)
-        {
-            hrDevice.SelectedLevel = 3;
-        }
+        private void btn_Level3_Click(object sender, RoutedEventArgs e) => hrDevice.SelectedLevel = 3;
 
         private void btn_LogMeasurements_Click(object sender, RoutedEventArgs e)
         {
             if (logFlag)
             {
-                if(secTimer.Enabled)
+                if(logTimer.Enabled)
                 {
-                    secTimer.Stop();
-                    secTimer.Dispose();
+                    logTimer.Stop();
+                    logTimer.Dispose();
                 }
                 btn_LogMeasurements.Content = "Messungen aufnehmen";
                 btn_LogMeasurements.Background = lgb_Red;
@@ -132,10 +161,24 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             }
             else
             {
-                SetTimer(1000);
+                SetLogTimer(1000);
                 btn_LogMeasurements.Content = "Messungen stopen";
                 btn_LogMeasurements.Background = lgb_Green;
                 logFlag = true;
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (logTimer != null)
+            {
+                logTimer.Stop();
+                logTimer.Dispose();
+            }
+            if (fanTimer != null)
+            {
+                fanTimer.Stop();
+                fanTimer.Dispose();
             }
         }
     }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simulation_eines_Wärmerückgewinnungsgerätes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="0" Width="0" FontSize="16" FontWeight="Bold" MinWidth="380" MinHeight="420">
+        Title="MainWindow" Height="0" Width="0" FontSize="16" FontWeight="Bold" MinWidth="380" MinHeight="500" Closing="Window_Closing">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="1"/>
@@ -63,6 +63,7 @@
                     </Button.Background>
                 </Button>
             </StackPanel>
+            <Image x:Name="img_fan" Height="100" Width="100" Source="res/images/engine-fan.png" RenderTransformOrigin="0.5,0.5"/>
             <StackPanel VerticalAlignment="Center" Margin="0,10,0,0">
                 <Label Content="Betriebsdaten" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
                 <Label Content="Drehzahl: 0 U/min" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
