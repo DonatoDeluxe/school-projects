@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Simulation_eines_Wärmerückgewinnungsgerätes
 {
@@ -101,9 +92,7 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
 
         private void OnLogTimerEvent(Object source, ElapsedEventArgs e)
         {
-
-            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
-                              e.SignalTime);
+            XMLHandler.WriteHRDeviceStatsInXml(hrDevice);
         }
 
         private void OnFanTimerEvent(Object source, ElapsedEventArgs e)
@@ -194,7 +183,7 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             else
             {
                 SetLogTimer(1000);
-                btn_LogMeasurements.Content = "Messungen stopen";
+                btn_LogMeasurements.Content = "Messungen stoppen";
                 btn_LogMeasurements.Background = lgb_Green;
                 logFlag = true;
             }
