@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 
 namespace Simulation_eines_Wärmerückgewinnungsgerätes
 {
-    class HeatRecoveryDevice
+    public class HeatRecoveryDevice
     {
         private static Timer secTimer = new Timer(500);
         private static readonly double[,] levelsStats = new double[4, 2] { {0, 0}, {30, 15}, {60, 45}, {90, 60} };
