@@ -21,7 +21,8 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
                 if (currentLevel == value)
                     return;
                 currentLevel = value;
-                CurrentLevelChanged();
+                CurrentLevelHasChanged();
+                OnCurrentLevelChanged();
             }
         }
 
@@ -34,7 +35,8 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
                 if (selectedLevel == value)
                     return;
                 selectedLevel = value;
-                SelectedLevelChanged();
+                OnSelectedLevelChanged();
+                SelectedLevelHasChanged();
             }
         }
 
@@ -43,6 +45,12 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
         public double Voltage { get; private set; }
         public double Power { get; private set; }
         public double[] CurrentSteps = new double[levelsStats.GetLength(1)];
+
+        public event EventHandler CurrentLevelChanged;
+        public event EventHandler SelectedLevelChanged;
+
+        public void OnCurrentLevelChanged() => CurrentLevelChanged?.Invoke(this, EventArgs.Empty);
+        public void OnSelectedLevelChanged() => SelectedLevelChanged?.Invoke(this, EventArgs.Empty);
 
         public HeatRecoveryDevice() {
             EngineSpeed = 0;
@@ -60,12 +68,12 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             return String.Format($"EngineSpeed: {EngineSpeed}\tCurrent: {Current}\tVoltage: {Voltage}\tPower: {Power}\t");
         }
 
-        public void CurrentLevelChanged()
+        public void CurrentLevelHasChanged()
         {
             SetStepsValues();
         }
 
-        public void SelectedLevelChanged()
+        public void SelectedLevelHasChanged()
         {
             if (Voltage < 230 && SelectedLevel > 0)
                 Voltage = 230;
@@ -104,12 +112,10 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             Console.WriteLine("selected level: " + selectedLevel);
             Console.WriteLine("level up or down: " + levelUpOrDown);
             Console.WriteLine("next level: " + nextLevel);
-            Console.WriteLine("steps(seconds) to goal: " + timeToGoal);
+            Console.WriteLine("max steps(seconds) to goal: " + timeToGoal);
 
             for (int i = 0; i < levelsStats.GetLength(1); i++)
-            {
                 CurrentSteps[i] = (levelsStats[nextLevel, i] - levelsStats[CurrentLevel, i]) / timeToGoal;
-            }
 
             if (secTimer.Enabled != true)
                 secTimer.Enabled = true;
