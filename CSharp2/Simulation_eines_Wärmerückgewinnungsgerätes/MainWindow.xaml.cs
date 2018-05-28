@@ -60,11 +60,23 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
         public MainWindow()
         {
             InitializeComponent();
-            btn_Off.Click += OnLevelSelectionChanged;
-            btn_Level1.Click += OnLevelSelectionChanged;
-            btn_Level2.Click += OnLevelSelectionChanged;
-            btn_Level3.Click += OnLevelSelectionChanged;
-            SetFanTimer(1000 / 60);
+            hrDevice.SelectedLevelChanged += OnSelectedLevelChanged;
+            hrDevice.CurrentLevelChanged += OnCurrentLevelChanged;
+            SetFanTimer(1000 / 60); //run with 60fps (60-times per second)
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (logTimer != null)
+            {
+                logTimer.Stop();
+                logTimer.Dispose();
+            }
+            if (fanTimer != null)
+            {
+                fanTimer.Stop();
+                fanTimer.Dispose();
+            }
         }
 
         private void SetLogTimer(int mSeconds)
@@ -120,21 +132,41 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             prevSystemTime = currentSystemTime;
         }
 
-        public void OnLevelSelectionChanged(object source, EventArgs eArgs)
+        public void OnCurrentLevelChanged(object source, EventArgs eArgs)
         {
-            var source_btn = source as Button;
-            foreach (Button level_btn in stackp_Levels.Children)
+            this.Dispatcher.Invoke(
+                new Action(
+                    () => SetLevelButtonsBackground()
+                )
+            );
+        }
+
+        public void OnSelectedLevelChanged(object source, EventArgs eArgs)
+        {
+            this.Dispatcher.Invoke(
+                new Action(
+                    () => SetLevelButtonsBackground()
+                )
+            );
+        }
+
+        private void SetLevelButtonsBackground()
+        {
+            for (int lvl = 0; lvl < stackp_Levels.Children.Count; lvl++)
             {
-                if (level_btn == source_btn)
+                var lvl_btn = stackp_Levels.Children[lvl] as Button;
+
+                if (lvl == hrDevice.CurrentLevel)
                 {
-                    //level_btn.IsEnabled = false;
-                    level_btn.Background = lgb_Yellow;
+                    if (lvl == 0)
+                        lvl_btn.Background = lgb_Red;
+                    else
+                        lvl_btn.Background = lgb_Green;
                 }
+                else if (lvl == hrDevice.SelectedLevel)
+                    lvl_btn.Background = lgb_Yellow;
                 else
-                {
-                    //level_btn.IsEnabled = true;
-                    level_btn.Background = lgb_White;
-                }
+                    lvl_btn.Background = lgb_White;
             }
         }
 
@@ -165,20 +197,6 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
                 btn_LogMeasurements.Content = "Messungen stopen";
                 btn_LogMeasurements.Background = lgb_Green;
                 logFlag = true;
-            }
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (logTimer != null)
-            {
-                logTimer.Stop();
-                logTimer.Dispose();
-            }
-            if (fanTimer != null)
-            {
-                fanTimer.Stop();
-                fanTimer.Dispose();
             }
         }
     }
