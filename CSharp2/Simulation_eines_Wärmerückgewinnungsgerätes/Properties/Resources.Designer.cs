@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Simulation_eines_Wärmerückgewinnungsgerätes.Properties
+namespace HeatRecoveryApplication.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Simulation_eines_Wärmerückgewinnungsgerätes.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HeatRecoveryApplication.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

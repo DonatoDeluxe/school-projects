@@ -1,14 +1,23 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Timers;
 
-namespace Simulation_eines_Wärmerückgewinnungsgerätes
+namespace HeatRecoveryApplication
 {
-    public class HeatRecoveryDevice
+    public class HeatRecoveryDevice : INotifyPropertyChanged
     {
-        private static Timer secTimer = new Timer(500);
+        #region Properties
         private static readonly double[,] levelsStats = new double[4, 2] { {0, 0}, {30, 15}, {60, 45}, {90, 60} };
+        public double[] CurrentSteps = new double[levelsStats.GetLength(1)];
 
+        private Timer secTimer = new Timer(1000);
         private int currentLevel;
+        private int selectedLevel;
+        private double engineSpeed;
+        private double current;
+        private double voltage;
+        private double power;
+
         public int CurrentLevel
         {
             get { return currentLevel; }
@@ -22,7 +31,6 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             }
         }
 
-        private int selectedLevel;
         public int SelectedLevel
         {
             get { return selectedLevel; }
@@ -36,17 +44,65 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             }
         }
 
-        public double EngineSpeed { get; private set; }
-        public double Current { get; private set; }
-        public double Voltage { get; private set; }
-        public double Power { get; private set; }
-        public double[] CurrentSteps = new double[levelsStats.GetLength(1)];
+        public double EngineSpeed
+        {
+            get { return engineSpeed; }
+            set
+            {
+                if (engineSpeed == value)
+                    return;
+                engineSpeed = value;
+                OnPropertyChanged("EngineSpeed");
+            }
 
+        }
+
+        public double Current
+        {
+            get { return current; }
+            set
+            {
+                if (current == value)
+                    return;
+                current = value;
+                OnPropertyChanged("Current");
+            }
+        }
+
+        public double Voltage
+        {
+            get { return voltage; }
+            set
+            {
+                if (voltage == value)
+                    return;
+                voltage = value;
+                OnPropertyChanged("Voltage");
+            }
+        }
+
+        public double Power
+        {
+            get { return power; }
+            set
+            {
+                if (power == value)
+                    return;
+                power = value;
+                OnPropertyChanged("Power");
+            }
+        }
+        #endregion
+
+        #region Event handlers
         public event EventHandler CurrentLevelChanged;
         public event EventHandler SelectedLevelChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public void OnCurrentLevelChanged() => CurrentLevelChanged?.Invoke(this, EventArgs.Empty);
-        public void OnSelectedLevelChanged() => SelectedLevelChanged?.Invoke(this, EventArgs.Empty);
+        private void OnCurrentLevelChanged() => CurrentLevelChanged?.Invoke(this, EventArgs.Empty);
+        private void OnSelectedLevelChanged() => SelectedLevelChanged?.Invoke(this, EventArgs.Empty);
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        #endregion
 
         public HeatRecoveryDevice() {
             EngineSpeed = 0;
@@ -59,17 +115,18 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             secTimer.Elapsed += OnSecondElapsed;
         }
 
+        #region Methods
         public override string ToString()
         {
-            return String.Format($"EngineSpeed: {EngineSpeed}\tCurrent: {Current}\tVoltage: {Voltage}\tPower: {Power}\t");
+            return String.Format($"EngineSpeed: {EngineSpeed}\t\tCurrent: {Current}\t\tVoltage: {Voltage}\t\tPower: {Power}");
         }
 
-        public void CurrentLevelHasChanged()
+        private void CurrentLevelHasChanged()
         {
             SetStepsValues();
         }
 
-        public void SelectedLevelHasChanged()
+        private void SelectedLevelHasChanged()
         {
             if (Voltage < 230 && SelectedLevel > 0)
                 Voltage = 230;
@@ -97,7 +154,7 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
                 diffLevels = SelectedLevel - CurrentLevel;
             }
 
-            int timeToGoal = 5; //in seconds
+            int timeToGoal = 5; //in steps (seconds)
             var levelUpOrDown = diffLevels / Math.Abs(diffLevels);
             var nextLevel = CurrentLevel + levelUpOrDown;
 
@@ -115,12 +172,6 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
 
             if (secTimer.Enabled != true)
                 secTimer.Enabled = true;
-        }
-
-        public void OnSecondElapsed(Object source, ElapsedEventArgs e)
-        {
-            DoDeviceStatsStep();
-            Console.WriteLine(this.ToString());
         }
 
         private void DoDeviceStatsStep()
@@ -146,9 +197,16 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             }
 
             if (Voltage != 0)
-                Current = Power / Voltage;
+                Current = 1000 * Power / Voltage;
             else
                 Current = 0;
         }
+
+        private void OnSecondElapsed(Object source, ElapsedEventArgs e)
+        {
+            DoDeviceStatsStep();
+            Console.WriteLine(this.ToString());
+        }
+        #endregion
     }
 }

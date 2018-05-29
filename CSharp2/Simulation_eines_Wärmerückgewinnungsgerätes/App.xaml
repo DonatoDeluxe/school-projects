@@ -1,7 +1,7 @@
-﻿<Application x:Class="Simulation_eines_Wärmerückgewinnungsgerätes.App"
+﻿<Application x:Class="HeatRecoveryApplication.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Simulation_eines_Wärmerückgewinnungsgerätes"
+             xmlns:local="clr-namespace:HeatRecoveryApplication"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

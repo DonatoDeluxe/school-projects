@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book_MVVM_Step_2", "Book_MV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book_MVVM_Step_3", "Book_MVVM_Step_3\Book_MVVM_Step_3.csproj", "{F09D1F2D-345A-44FC-8327-70185604DE71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulation_eines_Wärmerückgewinnungsgerätes", "Simulation_eines_Wärmerückgewinnungsgerätes\Simulation_eines_Wärmerückgewinnungsgerätes.csproj", "{FA6F6E88-B4A7-4673-A4B8-81028044BDF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeatRecoveryApplication", "Simulation_eines_Wärmerückgewinnungsgerätes\HeatRecoveryApplication.csproj", "{FA6F6E88-B4A7-4673-A4B8-81028044BDF4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book_MVVM_Step_5", "Book_MVVM_Step_5\Book_MVVM_Step_5.csproj", "{E0F810C5-8E94-47E7-BBC0-AF9AE22B61CA}"
 EndProject

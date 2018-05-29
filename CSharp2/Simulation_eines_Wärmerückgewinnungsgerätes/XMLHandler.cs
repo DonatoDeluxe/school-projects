@@ -3,11 +3,11 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace Simulation_eines_Wärmerückgewinnungsgerätes
+namespace HeatRecoveryApplication
 {
     public static class XMLHandler
     {
-        private static readonly string defaultPath = @"D:\HeatRecoveryDevice\";
+        private static readonly string defaultPath = @"C:\HeatRecoveryDevice\";
         private static readonly string defaultFilename = @"log";
         private static readonly XmlWriterSettings defaultWriterSettings = new XmlWriterSettings() {
             Indent = true,
@@ -20,7 +20,7 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             try
             {
                 if (path == null)
-                    path = defaultPath;
+                    path = defaultPath; //take default path if none is given
 
                 //create directory if it doesn't exist yet
                 if (!Directory.Exists(path))
@@ -42,16 +42,17 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
 
             try
             {
+                //create abs path string and take default filename if none is given
                 absPath = CreateDirectory(path) + (filename != null ? filename : defaultFilename) + @".xml";
 
                 if (xmlWriterSettings == null)
-                    xmlWriterSettings = defaultWriterSettings;
+                    xmlWriterSettings = defaultWriterSettings; //take default writer settings if none are given
 
                 //create file if it doesn't exist yet
                 if (!File.Exists(absPath))
                 {
                     XmlWriter writer = XmlWriter.Create(absPath, xmlWriterSettings);
-                    writer.WriteStartElement("Root");
+                    writer.WriteStartElement("Root"); //creating root element for valid xml-file
                     writer.WriteEndElement();
                     writer.Flush();
                     writer.Close();
@@ -81,14 +82,13 @@ namespace Simulation_eines_Wärmerückgewinnungsgerätes
             var doc = XDocument.Load(absPath);
             var root = doc.Element("Root");
             var tableElem = root.Element(tableName);
-            if (tableElem == null)
+            if (tableElem == null) //if node with given tablename doesn't exist yet...
             {
-                tableElem = new XElement(tableName);
-                root.Add(tableElem);
+                tableElem = new XElement(tableName); //...create one and...
+                root.Add(tableElem); //...add it to root node
             }
 
-            tableElem.Add(entryElem);
-            //doc.Element(tableName).Add(entryElem);
+            tableElem.Add(entryElem); //add the new entry element to the table node
             doc.Save(absPath);
         }
     }

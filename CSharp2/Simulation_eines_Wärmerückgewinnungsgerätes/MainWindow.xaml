@@ -1,11 +1,14 @@
-﻿<Window x:Class="Simulation_eines_Wärmerückgewinnungsgerätes.MainWindow"
+﻿<Window x:Class="HeatRecoveryApplication.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Simulation_eines_Wärmerückgewinnungsgerätes"
+        xmlns:local="clr-namespace:HeatRecoveryApplication"
         mc:Ignorable="d"
         Title="MainWindow" Height="0" Width="0" FontSize="16" FontWeight="Bold" MinWidth="380" MinHeight="500" Closing="Window_Closing">
+    <Window.DataContext>
+        <local:HeatRecoveryDevice/>
+    </Window.DataContext>
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="1"/>
@@ -64,12 +67,28 @@
                 </Button>
             </StackPanel>
             <Image x:Name="img_fan" Height="100" Width="100" Source="res/images/engine-fan.png" RenderTransformOrigin="0.5,0.5"/>
-            <StackPanel VerticalAlignment="Center" Margin="0,10,0,0">
+            <StackPanel VerticalAlignment="Center" Margin="0,10,0,0" HorizontalAlignment="Center">
                 <Label Content="Betriebsdaten" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
-                <Label Content="Drehzahl: 0 U/min" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-                <Label Content="Strom: 0 mA" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-                <Label Content="Spannung: 0 V" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-                <Label Content="Leistung: 0 W" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                <StackPanel VerticalAlignment="Center" Margin="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label Content="Drehzahl:" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="100"/>
+                    <Label Content="{Binding EngineSpeed}" ContentStringFormat="{}{0:0.0}" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="55" HorizontalContentAlignment="Right"/>
+                    <Label Content="U/min" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Margin="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label Content="Strom:" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="100"/>
+                    <Label Content="{Binding Current}" ContentStringFormat="{}{0:0.0}" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="55" HorizontalContentAlignment="Right"/>
+                    <Label Content="mA" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Margin="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label Content="Spannung:" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="100"/>
+                    <Label Content="{Binding Voltage}" ContentStringFormat="{}{0:N0}" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="55" HorizontalContentAlignment="Right"/>
+                    <Label Content="V" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Margin="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label Content="Leistung:" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="100"/>
+                    <Label Content="{Binding Power}" ContentStringFormat="{}{0:0.0}" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="55" HorizontalContentAlignment="Right"/>
+                    <Label Content="W" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                </StackPanel>
                 <Button Name="btn_LogMeasurements" Content="Messungen aufnehmen" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150" Click="btn_LogMeasurements_Click">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Simulation_eines_Wärmerückgewinnungsgerätes.Properties
+namespace HeatRecoveryApplication.Properties
 {
 
 
