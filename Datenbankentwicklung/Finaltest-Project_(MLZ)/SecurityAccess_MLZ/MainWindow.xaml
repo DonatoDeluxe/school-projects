@@ -1,0 +1,54 @@
+﻿<Window x:Class="SecurityAccess_MLZ.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecurityAccess_MLZ"
+        mc:Ignorable="d"
+        Title="Tür-Sicherheitssystem-Test-GUI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinWidth="520" MinHeight="250" HorizontalAlignment="Left" VerticalAlignment="Top" Height="300" Width="600">
+    <Window.Background>
+        <RadialGradientBrush GradientOrigin="0.5,0" RadiusY="0.7" RadiusX="0.3">
+            <GradientStop Color="#FF6A8EA3" Offset="1"/>
+            <GradientStop Color="White"/>
+        </RadialGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="1" Margin="0">
+            <GroupBox Name="grp_DoorLockSystem" Header="Türschliesssystem" Margin="5,5,2.5,5" MinWidth="230" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top">
+                <StackPanel MinWidth="200">
+                    <ComboBox Name="cmbBox_Door" Margin="5" VerticalAlignment="Top" VerticalContentAlignment="Center" SelectionChanged="cmbBox_Door_SelectionChanged"/>
+                    <Button Name="btn_CloseDoor" Content="Tür schliessen" Margin="5" VerticalAlignment="Bottom" IsEnabled="False" FontSize="14" Click="btn_CloseDoor_Click"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Name="grp_Badge" Header="Badge" Margin="5,5,2.6,5" MinWidth="230" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Bottom">
+                <StackPanel MinWidth="200">
+                    <ComboBox Name="cmbBox_Badge" Margin="5" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                    <Button Name="btn_NewBadge" Content="Neuer Badge" Margin="5" VerticalAlignment="Top" Click="btn_NewBadge_Click" FontSize="14"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <GroupBox Name="grp_SecuritySystem" Header="Sicherheitssystem" Margin="2.5,5,5,5" VerticalAlignment="Top" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            <StackPanel Margin="5">
+                <GroupBox Name="grp_PIN" Header="6-stelliger PIN" Margin="0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <TextBox Name="txtBox_PIN" Margin="0" TextWrapping="Wrap" Text="000000" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GotFocus="txtBox_PIN_GotFocus" MaxLength="6">
+                        <TextBox.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF828282" Offset="0.55"/>
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="White"/>
+                            </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+                </GroupBox>
+                <TextBlock Name="txtBlock_PINErrorMessage" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Label Name="lbl_PINErrorCount" Content="Anz. fehlerhafte PIN-Eingaben: 0" Margin="0" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                <Button Name="btn_CheckPIN" Content="Überprüfen" Margin="0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold" IsEnabled="False" Click="btn_CheckPIN_Click"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

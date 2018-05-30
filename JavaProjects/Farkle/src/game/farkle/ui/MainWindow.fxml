@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="mainAnchorPane" stylesheets="@mainWindow.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.farkle.control.MainWindowController">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+          	<ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+          	<ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+          	<RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+          	<RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-radius: 10;" GridPane.columnSpan="2" GridPane.rowSpan="8">
+               <children>
+                  <VBox alignment="CENTER_LEFT" style="-fx-border-width: 1; -fx-border-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label maxWidth="1.7976931348623157E308" text="Score" underline="true">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Round 1">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="round1" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Round 2">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="round2" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Round 3">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="round3" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Round 4">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="round4" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Round 5">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="round5" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Round 6">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="round6" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Round 7">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="round7" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Round 8">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="round8" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Round 9">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="round9" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Round 10">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="round10" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Total Score">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="total" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 3;" GridPane.columnIndex="3" GridPane.columnSpan="2147483647">
+               <children>
+                  <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="600.0">
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label fx:id="gameOver" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="600.0" text="GAME OVER" textAlignment="CENTER" textFill="#b90000" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Comic Sans MS" size="60.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="diceHBox">
+                     <children>
+                        <ToggleButton fx:id="die1" mnemonicParsing="false" onMouseClicked="#dieClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-background-radius: 10;" text="F" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Comic Sans MS" size="42.0" />
+                           </font>
+                        </ToggleButton>
+                        <ToggleButton fx:id="die2" mnemonicParsing="false" onMouseClicked="#dieClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-background-radius: 10;" text="A" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Comic Sans MS" size="42.0" />
+                           </font>
+                        </ToggleButton>
+                        <ToggleButton fx:id="die3" mnemonicParsing="false" onMouseClicked="#dieClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-background-radius: 10;" text="R" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Comic Sans MS" size="42.0" />
+                           </font>
+                        </ToggleButton>
+                        <ToggleButton fx:id="die4" mnemonicParsing="false" onMouseClicked="#dieClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-background-radius: 10;" text="K" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Comic Sans MS" size="42.0" />
+                           </font>
+                        </ToggleButton>
+                        <ToggleButton fx:id="die5" mnemonicParsing="false" onMouseClicked="#dieClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-background-radius: 10;" text="L" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Comic Sans MS" size="42.0" />
+                           </font>
+                        </ToggleButton>
+                        <ToggleButton fx:id="die6" mnemonicParsing="false" onMouseClicked="#dieClicked" prefHeight="90.0" prefWidth="90.0" style="-fx-background-radius: 10;" text="E" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Comic Sans MS" size="42.0" />
+                           </font>
+                        </ToggleButton>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.columnSpan="6" GridPane.rowIndex="1">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0" spacing="10.0">
+                     <children>
+                        <Button id="newGame_btn" fx:id="newGameBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#newGame" prefWidth="200.0" style="-fx-background-color: linear-gradient(#200 5%, red 50%, #200 95%);" text="New Game" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Comic Sans MS" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button id="roll_btn" fx:id="rollBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#doRoll" prefWidth="200.0" style="-fx-background-color: linear-gradient(#0F0 5%, #8F8 50%, #0F0 95%);" text="Roll" textAlignment="CENTER">
+                           <font>
+                              <Font name="Comic Sans MS" size="24.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                        <Button id="writePoints_btn" fx:id="writePointsBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#doWritePoints" prefWidth="200.0" text="Write Points" textAlignment="CENTER">
+                           <font>
+                              <Font name="Comic Sans MS" size="24.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-radius: 10;" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="6">
+               <children>
+                  <VBox alignment="CENTER_LEFT" prefHeight="734.0" prefWidth="200.0" style="-fx-border-width: 1; -fx-border-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label maxWidth="1.7976931348623157E308" text="Roll 1">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="roll1" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Roll 2">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="roll2" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Roll 3">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="roll3" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Roll 4">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="roll4" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Roll 5">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="roll5" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Roll 6">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="roll6" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" text="Roll Total">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="rollTotal" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="1234567890" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</AnchorPane>
